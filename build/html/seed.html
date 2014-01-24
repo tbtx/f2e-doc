@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
     <link rel="next" title="cache" href="cache.html" />
-    <link rel="prev" title="Welcome to tbtx’s documentation!" href="index.html" /> 
+    <link rel="prev" title="tbtx文档" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +38,7 @@
           <a href="cache.html" title="cache"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to tbtx’s documentation!"
+          <a href="index.html" title="tbtx文档"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -51,6 +51,41 @@
             
   <div class="section" id="seed">
 <h1>seed<a class="headerlink" href="#seed" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>log(msg, cat, src)</li>
+</ul>
+<p>在log环境下输出log信息，避免因为忘记删除log语句而引发错误</p>
+<blockquote>
+<div><p>log(msg) =&amp;gt; msg</p>
+<p>&#64;param cat 消息类型，如error, info, warm等
+log(msg, cat) 如log(&#8216;hello&#8217;, &#8216;error&#8217;)</p>
+<p>&#64;param src: 消息来源
+log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&#8217;) =&amp;gt; pageA: hello</p>
+</div></blockquote>
+<ul class="simple">
+<li>global</li>
+</ul>
+<p>全局对象，浏览器下是window</p>
+<ul class="simple">
+<li>noop</li>
+</ul>
+<p>空函数, 相当于$.noop</p>
+<ul class="simple">
+<li>staticUrl</li>
+</ul>
+<p>静态资源地址前缀，会在后面根据tbtx.js所在目录进行重写，这里作为备用</p>
+<ul class="simple">
+<li>_tbtx</li>
+</ul>
+<p>存储之前的tbtx</p>
+<ul class="simple">
+<li>debug</li>
+</ul>
+<p>debug mod</p>
+<ul class="simple">
+<li>uniqueCid</li>
+</ul>
+<p>生成客户端唯一cid</p>
 </div>
 
 
@@ -61,7 +96,7 @@
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to tbtx&#8217;s documentation!</a></p>
+                        title="previous chapter">tbtx文档</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="cache.html"
                         title="next chapter">cache</a></p>
@@ -97,7 +132,7 @@
           <a href="cache.html" title="cache"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to tbtx’s documentation!"
+          <a href="index.html" title="tbtx文档"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

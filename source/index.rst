@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to tbtx's documentation!
+tbtx文档
 ================================
 
 Contents:
@@ -22,8 +22,8 @@ Contents:
 * cache: 缓存
 * lang: 语言扩展
 * events: dom无关事件
-* aspect: 切面编程，提供before，after
-* attrs: 属性操作
+* aspect: 切面编程，提供before，after，在方法之前或之后执行方法
+* attrs: 属性get/set/change
 
 Indices and tables
 ==================
