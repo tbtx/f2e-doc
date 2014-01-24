@@ -31,6 +31,7 @@ lang
 单例模式
 
     // 唯一实例
+
     var getBody = tbtx.singleton(function() {
         return document.body;
     });
@@ -38,12 +39,14 @@ lang
     getBody() === getBody() // true
 
     // 或者对于只执行一次的初始化函数
+
     var init = tbtx.singleton(function() {
         console.log("init");
         return true;
     });
 
     init() => init
+
     init() => 无输出
 
 * ucfirst(val)
@@ -72,7 +75,9 @@ lang
     later: function (fn, when, periodic, context, data) {}
 
     var timer = tbtx.later(function(){}, 500, true);
+
     timer.cancel() // 取消定时器
+
     timer.interval => true
 
 *  each(arr/object, fn, context)
@@ -80,6 +85,7 @@ lang
 遍历对象或数组，执行函数
 
     fn(item, index, arr)
+
     return false终止执行
 
 * indexOf(arr, item)
@@ -101,4 +107,5 @@ ES5 map,filter,reduce
 返回str的长度，ascii的算1，ascii之外的算2
 
     expect(tbtx.sizeof("abc")).toEqual(3);
+
     expect(tbtx.sizeof("a汉字c")).toEqual(6);

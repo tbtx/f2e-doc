@@ -81,20 +81,22 @@
 </ul>
 <p>单例模式</p>
 <blockquote>
-<div><p>// 唯一实例
-var getBody = tbtx.singleton(function() {</p>
-<blockquote>
-<div>return document.body;</div></blockquote>
+<div><p>// 唯一实例</p>
+<dl class="docutils">
+<dt>var getBody = tbtx.singleton(function() {</dt>
+<dd>return document.body;</dd>
+</dl>
 <p>});</p>
 <p>getBody() === getBody() // true</p>
-<p>// 或者对于只执行一次的初始化函数
-var init = tbtx.singleton(function() {</p>
-<blockquote>
-<div>console.log(&#8220;init&#8221;);
-return true;</div></blockquote>
+<p>// 或者对于只执行一次的初始化函数</p>
+<dl class="docutils">
+<dt>var init = tbtx.singleton(function() {</dt>
+<dd>console.log(&#8220;init&#8221;);
+return true;</dd>
+</dl>
 <p>});</p>
-<p>init() =&gt; init
-init() =&gt; 无输出</p>
+<p>init() =&gt; init</p>
+<p>init() =&gt; 无输出</p>
 </div></blockquote>
 <ul class="simple">
 <li>ucfirst(val)</li>
@@ -126,17 +128,18 @@ init() =&gt; 无输出</p>
 </dd>
 </dl>
 <p>later: function (fn, when, periodic, context, data) {}</p>
-<p>var timer = tbtx.later(function(){}, 500, true);
-timer.cancel() // 取消定时器
-timer.interval =&gt; true</p>
+<p>var timer = tbtx.later(function(){}, 500, true);</p>
+<p>timer.cancel() // 取消定时器</p>
+<p>timer.interval =&gt; true</p>
 </div></blockquote>
 <ul class="simple">
 <li>each(arr/object, fn, context)</li>
 </ul>
 <p>遍历对象或数组，执行函数</p>
 <blockquote>
-<div>fn(item, index, arr)
-return false终止执行</div></blockquote>
+<div><p>fn(item, index, arr)</p>
+<p>return false终止执行</p>
+</div></blockquote>
 <ul class="simple">
 <li>indexOf(arr, item)</li>
 </ul>
@@ -156,8 +159,9 @@ return false终止执行</div></blockquote>
 </ul>
 <p>返回str的长度，ascii的算1，ascii之外的算2</p>
 <blockquote>
-<div>expect(tbtx.sizeof(&#8220;abc&#8221;)).toEqual(3);
-expect(tbtx.sizeof(&#8220;a汉字c&#8221;)).toEqual(6);</div></blockquote>
+<div><p>expect(tbtx.sizeof(&#8220;abc&#8221;)).toEqual(3);</p>
+<p>expect(tbtx.sizeof(&#8220;a汉字c&#8221;)).toEqual(6);</p>
+</div></blockquote>
 </div>
 
 
