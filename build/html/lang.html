@@ -51,6 +51,113 @@
             
   <div class="section" id="lang">
 <h1>lang<a class="headerlink" href="#lang" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>isNotEmptyString(val)</li>
+</ul>
+<p>判断是否是非空字符串</p>
+<ul class="simple">
+<li>isPlainObject(o)</li>
+</ul>
+<p>相对于$.isPlainObject(), 判断一个对象是否为纯对象</p>
+<ul class="simple">
+<li>isPending(val)</li>
+</ul>
+<p>判断一个deferred对象是否正在处理中</p>
+<ul class="simple">
+<li>isArray/isString/isFunction/is...</li>
+<li>type(o) =&gt; string/function/....</li>
+</ul>
+<p>类型判断</p>
+<ul class="simple">
+<li>inArray(arr, item)</li>
+</ul>
+<p>判断item是否在arr中</p>
+<ul class="simple">
+<li>isUri(val)</li>
+</ul>
+<p>判断一个字符串是否是一个Uri</p>
+<ul class="simple">
+<li>singleton(fn, context)</li>
+</ul>
+<p>单例模式</p>
+<blockquote>
+<div><p>// 唯一实例
+var getBody = tbtx.singleton(function() {</p>
+<blockquote>
+<div>return document.body;</div></blockquote>
+<p>});</p>
+<p>getBody() === getBody() // true</p>
+<p>// 或者对于只执行一次的初始化函数
+var init = tbtx.singleton(function() {</p>
+<blockquote>
+<div>console.log(&#8220;init&#8221;);
+return true;</div></blockquote>
+<p>});</p>
+<p>init() =&gt; init
+init() =&gt; 无输出</p>
+</div></blockquote>
+<ul class="simple">
+<li>ucfirst(val)</li>
+</ul>
+<p>首字母大写</p>
+<blockquote>
+<div>tbtx.ucfirst(&#8220;string&#8221;) =&gt; &#8220;String&#8221;</div></blockquote>
+<ul class="simple">
+<li>lcfirst(val)</li>
+</ul>
+<p>首字母小写</p>
+<ul class="simple">
+<li>later</li>
+</ul>
+<p>延迟执行函数，对setTimeout和setInterval的一个封装</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>/**</dt>
+<dd><ul class="first simple">
+<li>[later description]</li>
+<li>&#64;param  {Function} fn       要执行的函数</li>
+<li>&#64;param  {number}   when     延迟时间</li>
+<li>&#64;param  {boolean}   periodic 是否周期执行</li>
+<li>&#64;param  {object}   context  context</li>
+<li>&#64;param  {Array}   data     传递的参数</li>
+<li>&#64;return {object}            timer，cancel() and interval</li>
+</ul>
+<p class="last"><a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+</dd>
+</dl>
+<p>later: function (fn, when, periodic, context, data) {}</p>
+<p>var timer = tbtx.later(function(){}, 500, true);
+timer.cancel() // 取消定时器
+timer.interval =&gt; true</p>
+</div></blockquote>
+<ul class="simple">
+<li>each(arr/object, fn, context)</li>
+</ul>
+<p>遍历对象或数组，执行函数</p>
+<blockquote>
+<div>fn(item, index, arr)
+return false终止执行</div></blockquote>
+<ul class="simple">
+<li>indexOf(arr, item)</li>
+</ul>
+<p>数组或字符串的indeOf</p>
+<ul class="simple">
+<li>map(arr, fn, context)</li>
+<li>filter(arr, fn, context)</li>
+<li>reduce(array, callback, initialValue)</li>
+</ul>
+<p>ES5 map,filter,reduce</p>
+<ul class="simple">
+<li>unique(arr)</li>
+</ul>
+<p>数组去重</p>
+<ul class="simple">
+<li>sizeof(str)</li>
+</ul>
+<p>返回str的长度，ascii的算1，ascii之外的算2</p>
+<blockquote>
+<div>expect(tbtx.sizeof(&#8220;abc&#8221;)).toEqual(3);
+expect(tbtx.sizeof(&#8220;a汉字c&#8221;)).toEqual(6);</div></blockquote>
 </div>
 
 
