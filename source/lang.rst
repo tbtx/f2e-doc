@@ -210,10 +210,15 @@ Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自
     tbtx.classify(o);
 
     var Events = function(){};
+
     Events.prototype = {
+
         on: function(){},
+
         off: function(){}
-    }
+
+    };
+
     o.Implements(Events);   // o对象即拥有了on和off方法
 
 * Now()
