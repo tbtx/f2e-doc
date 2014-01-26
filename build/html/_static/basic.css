@@ -89,7 +89,6 @@ div.sphinxsidebar #searchbox input[type="submit"] {
 
 img {
     border: 0;
-    max-width: 100%;
 }
 
 /* -- search page ----------------------------------------------------------- */
@@ -402,6 +401,10 @@ dl.glossary dt {
     margin: 0;
 }
 
+.refcount {
+    color: #060;
+}
+
 .optional {
     font-size: 1.3em;
 }
@@ -469,20 +472,6 @@ table.highlighttable {
 
 table.highlighttable td {
     padding: 0 0.5em 0 0.5em;
-}
-
-div.code-block-filename {
-    padding: 2px 5px;
-    font-size: small;
-}
-
-div.code-block-filename tt {
-    background-color: transparent;
-}
-
-div.code-block-filename + pre,
-div.code-block-filename + div.highlight > pre {
-    margin-top: 0;
 }
 
 tt.descname {

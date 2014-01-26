@@ -27,8 +27,8 @@
     <link rel="next" title="events" href="events.html" />
     <link rel="prev" title="cache" href="cache.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -47,7 +47,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="lang">
 <h1>lang<a class="headerlink" href="#lang" title="Permalink to this headline">¶</a></h1>
@@ -79,7 +79,7 @@
 <ul class="simple">
 <li>singleton(fn, context)</li>
 </ul>
-<p>单例模式</p>
+<p>单例模式, 多次调用返回同一实例</p>
 <blockquote>
 <div><p>// 唯一实例</p>
 <dl class="docutils">
@@ -109,7 +109,7 @@ return true;</dd>
 </ul>
 <p>首字母小写</p>
 <ul class="simple">
-<li>later</li>
+<li>later(fn, when, periodic, context, data)</li>
 </ul>
 <p>延迟执行函数，对setTimeout和setInterval的一个封装</p>
 <blockquote>
@@ -148,8 +148,10 @@ return true;</dd>
 <li>map(arr, fn, context)</li>
 <li>filter(arr, fn, context)</li>
 <li>reduce(array, callback, initialValue)</li>
+<li>every(arr, fn, context)</li>
+<li>some(arr, fn, context)</li>
 </ul>
-<p>ES5 map,filter,reduce</p>
+<p>ES5 map,filter,reduce,every,some</p>
 <ul class="simple">
 <li>unique(arr)</li>
 </ul>
@@ -162,13 +164,185 @@ return true;</dd>
 <div><p>expect(tbtx.sizeof(&#8220;abc&#8221;)).toEqual(3);</p>
 <p>expect(tbtx.sizeof(&#8220;a汉字c&#8221;)).toEqual(6);</p>
 </div></blockquote>
+<ul class="simple">
+<li>keys(o)</li>
+</ul>
+<p>返回对象的键的数组</p>
+<ul class="simple">
+<li>makeArray(val)</li>
+</ul>
+<p>转换成一个原生数组。</p>
+<ul class="simple">
+<li>deepCopy(o)</li>
+</ul>
+<p>深拷贝一个对象或数组</p>
+<ul class="simple">
+<li>namespace(args)</li>
+</ul>
+<p>命名空间，创建相应命名对象</p>
+<blockquote>
+<div><p>tbtx.namespace(&#8220;app&#8221;)</p>
+<p>tbtx.app =&gt; {}</p>
+</div></blockquote>
+<ul class="simple">
+<li>startsWith(str, prefix)</li>
+</ul>
+<p>判断字符串是否以prefix开头</p>
+<blockquote>
+<div>tbtx.startsWith(&#8220;abc&#8221;, &#8220;a&#8221;) =&gt; true</div></blockquote>
+<ul class="simple">
+<li>endsWith(str, suffix)</li>
+</ul>
+<p>判断字符串是否以suffix结尾</p>
+<ul class="simple">
+<li>choice(m, n)/choice(arr)</li>
+</ul>
+<p>返回一个m和n之间的随机数，m和n大小随意</p>
+<p>也可以传入一个数组，随机返回数组内一个元素</p>
+<p>如n &lt; m, 返回结果包含n不包含m，即tbtx.choice(0, 10)返回0-9之间的任意数</p>
+<ul class="simple">
+<li>shuffle(arr)</li>
+</ul>
+<p>数组随机重排序</p>
+<ul class="simple">
+<li>Class(parent, properties)</li>
+</ul>
+<p>类与继承的实现</p>
+<p>Class的实例拥有多个方法</p>
+<p>include(o) =&gt; 添加属性或方法到原型上，让实例调用</p>
+<p>extend(o) =&gt; 添加类属性或方法</p>
+<p>proxy(fn) =&gt; 保证fn调用时的this为当前class，主要用于事件处理程序</p>
+<p>传入properties实际就是调用include</p>
+<blockquote>
+<div><p>var Slide = new Class();</p>
+<p>// 向类上添加静态属性</p>
+<dl class="docutils">
+<dt>Slide.extend({</dt>
+<dd>name: &#8216;slide&#8217;</dd>
+</dl>
+<p>});</p>
+<p>Slide.name =&gt;; &#8216;slide&#8217;</p>
+<p>// 向实例上添加属性,其中init方法会在实例化的时候自动调用,也可以使用Slide.fn或者prototype访问到类的原型对象</p>
+<dl class="docutils">
+<dt>Slide.include({</dt>
+<dd><dl class="first docutils">
+<dt>init: funciton(page) {</dt>
+<dd>this.page = page;</dd>
+</dl>
+<p>},</p>
+<dl class="docutils">
+<dt>sayPage: function() {</dt>
+<dd>return this.page;</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>});</p>
+<p>var s = new Slide(4);</p>
+<p>s.sayPage() =&gt; 4;</p>
+<p>// 继承
+var SpecialSlide = new Class(Slide);
+var s2 = new SpecialSlide(5);
+s2.page = 6;
+s2.sayPage() =&gt; 6</p>
+</div></blockquote>
+<ul class="simple">
+<li>classify(o)</li>
+</ul>
+<p>让一个类或者对象（先称其为target）拥有Implements方法</p>
+<p>Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自身到 target上</p>
+<blockquote>
+<div><p>var o = {};</p>
+<p>tbtx.classify(o);</p>
+<p>var Events = function(){};
+Events.prototype = {</p>
+<blockquote>
+<div>on: function(){},
+off: function(){}</div></blockquote>
+<p>}
+o.Implements(Events);   // o对象即拥有了on和off方法</p>
+</div></blockquote>
+<ul class="simple">
+<li>Now()</li>
+</ul>
+<p>返回时间戳</p>
+<ul class="simple">
+<li>throttle(fn, [ms[, context]])</li>
+</ul>
+<p>当在scroll事件或者resize事件里执行大量操作时，频繁触发会导致浏览器很卡，函数节流将函数限制在多少ms内只会触发一次，使用:$(window).on(&#8216;resize&#8217;, throttle(function, 300));</p>
+<ul class="simple">
+<li>curry(fn)</li>
+</ul>
+<p>函数柯里化</p>
+<p>调用同样的函数并且传入的参数大部分都相同的时候，就是考虑柯里化的理想场景</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>var add = function(num1, num2) {</dt>
+<dd>return num2 + num1;</dd>
+</dl>
+<p>};</p>
+<p>var curriedAdd = S.curry(add, 5);</p>
+<p>curriedAdd(3) =&gt; 8  // 5 + 3</p>
+<p>curriedAdd(4) =&gt; 9  // 5 + 4</p>
+</div></blockquote>
+<ul class="simple">
+<li>substitute(str, o, regexp)</li>
+</ul>
+<p>模板替换</p>
+<blockquote>
+<div>substitute(&#8220;my name is {{ name }}&#8221;, {name: &#8216;alex&#8217;}) =&gt; my name is alex</div></blockquote>
+<ul class="simple">
+<li>param(o, sep, eq, serializeArray)</li>
+</ul>
+<p>对象转为query字符串, =号和?号都可以自定义</p>
+<ul class="simple">
+<li>unparam(str, sep, eq)</li>
+</ul>
+<p>query字符串转为对象, =号和?号都可以自定义</p>
+<ul class="simple">
+<li>parseUrl(url)</li>
+</ul>
+<p>解析url，返回url信息，url默认为location.href</p>
+<blockquote>
+<div>// 返回对象
+scheme: 协议，如http
+domain: 域名，如miiee.taobao.com
+port: 端口，如8080
+path: 路径，如/themes
+query: 查询字符串
+fragment: 锚点</div></blockquote>
+<ul class="simple">
+<li>getFragment([url])</li>
+</ul>
+<p>返回url的锚点</p>
+<ul class="simple">
+<li>getQueryParam([name[, url]])</li>
+</ul>
+<p>返回解析url的查询字符串的对象，如果提供name，则返回name的值</p>
+<ul class="simple">
+<li>addQueryParam(name, value[, url])/addQueryParam(o[, url])</li>
+</ul>
+<p>对一个url增加查询参数，返回增加后的url</p>
+<p>如果有多个参数要增加可以传入一个对象</p>
+<ul class="simple">
+<li>removeQueryParam(name[, url])</li>
+</ul>
+<p>对一个url删除查询参数，返回删除参数后的url</p>
+<ul class="simple">
+<li>escapeHtml(text)</li>
+</ul>
+<p>此函数会对以下符号进行 escape： &#8221; &lt; &gt; &amp; 和空格</p>
+<ul class="simple">
+<li>unEscapeHtml(text)</li>
+</ul>
+<p>此函数会对以下符号进行 unEscape： &#8221; &lt; &gt; &amp; 和空格</p>
 </div>
 
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="cache.html"
@@ -176,14 +350,12 @@ return true;</dd>
   <h4>Next topic</h4>
   <p class="topless"><a href="events.html"
                         title="next chapter">events</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/lang.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/lang.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -200,7 +372,7 @@ return true;</dd>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -215,9 +387,9 @@ return true;</dd>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2014, zenxds.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>

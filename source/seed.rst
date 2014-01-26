@@ -35,6 +35,6 @@ seed
 
 debug mod
 
-* uniqueCid
+* uniqueCid()
 
 生成客户端唯一cid
