@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt; &mdash; tbtx 0.1.0 documentation</title>
+    <title>aspect &mdash; tbtx 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -49,7 +49,25 @@
         <div class="bodywrapper">
           <div class="body">
             
-  
+  <div class="section" id="aspect">
+<h1>aspect<a class="headerlink" href="#aspect" title="Permalink to this headline">¶</a></h1>
+<p>使用 Aspect，可以允许你在指定方法执行的前后插入特定函数。</p>
+<ul class="simple">
+<li>before</li>
+</ul>
+<p>在 object[methodName] 方法执行前，先执行 callback 函数。</p>
+<ul class="simple">
+<li>after</li>
+</ul>
+<p>在 object[methodName] 方法执行后，再执行 callback 函数。</p>
+<blockquote>
+<div><p>var o = {};</p>
+<p>tbtx.classify(o);</p>
+<p>o.Implements(tbtx.Aspect);   // o对象即拥有了before和after方法</p>
+<p>或者用tbtx.Class的实例去Implements</p>
+</div></blockquote>
+</div>
+
 
           </div>
         </div>

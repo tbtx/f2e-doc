@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>events &mdash; tbtx 0.1.0 documentation</title>
+    <title>msg &mdash; tbtx 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="aspect" href="aspect.html" />
-    <link rel="prev" title="lang" href="lang.html" /> 
+    <link rel="next" title="miiee" href="miiee.html" />
+    <link rel="prev" title="support" href="support.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="aspect.html" title="aspect"
+          <a href="miiee.html" title="miiee"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="lang.html" title="lang"
+          <a href="support.html" title="support"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -49,47 +49,12 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="events">
-<h1>events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h1>
-<p>提供基本的事件添加、移除和触发功能。</p>
-<p>默认已经mixTo tbtx</p>
-<p>并且可以通过tbtx.on(&#8220;window.resize&#8221;)和tbtx.on(&#8220;window.scroll&#8221;)监听throttle过后的函数</p>
-<p>使用 Events 有两种方式，一种是直接实例化：</p>
-<blockquote>
-<div><p>var object = new tbtx.Events();</p>
-<dl class="docutils">
-<dt>object.on(&#8216;expand&#8217;, function() {</dt>
-<dd>alert(&#8216;expanded&#8217;);</dd>
-</dl>
-<p>});</p>
-<p>object.trigger(&#8216;expand&#8217;);</p>
-</div></blockquote>
-<p>另一种是将 Events 混入（mix-in）到其他类中：</p>
-<blockquote>
-<div><p>function Dog() {}</p>
-<p>tbtx.Events.mixTo(Dog);</p>
-<dl class="docutils">
-<dt>Dog.prototype.sleep = function() {</dt>
-<dd>this.trigger(&#8216;sleep&#8217;);</dd>
-</dl>
-<p>};</p>
-<p>var dog = new Dog();</p>
-<dl class="docutils">
-<dt>dog.on(&#8216;sleep&#8217;, function() {</dt>
-<dd>alert(&#8216;狗狗睡得好香呀&#8217;);</dd>
-</dl>
-<p>});</p>
-<p>dog.sleep();</p>
-</div></blockquote>
-<p>通过new tbtx.Class创建的类，或者对象或类classify之后, 去Implements Events，也可以获得on/off/trigger的能力</p>
-<blockquote>
-<div><p>var o = {};</p>
-<p>tbtx.classify(o);</p>
-<p>o.Implements(tbtx.Events);   // o对象即拥有了on和off方法</p>
-<p>// 或者</p>
-<p>var App = new tbtx.Class();</p>
-<p>App.Implements(tbtx.Events)</p>
-</div></blockquote>
+  <div class="section" id="msg">
+<h1>msg<a class="headerlink" href="#msg" title="Permalink to this headline">¶</a></h1>
+<p>消息Widget</p>
+<p>warning error info debug success</p>
+<p>tbtx.MSG.error/warning/success/info/debug(msg)</p>
+<p>或者直接使用tbtx.error/warning/success/info/debug</p>
 </div>
 
 
@@ -99,14 +64,14 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lang.html"
-                        title="previous chapter">lang</a></p>
+  <p class="topless"><a href="support.html"
+                        title="previous chapter">support</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="aspect.html"
-                        title="next chapter">aspect</a></p>
+  <p class="topless"><a href="miiee.html"
+                        title="next chapter">miiee</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/events.txt"
+    <li><a href="_sources/msg.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -133,10 +98,10 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="aspect.html" title="aspect"
+          <a href="miiee.html" title="miiee"
              >next</a> |</li>
         <li class="right" >
-          <a href="lang.html" title="lang"
+          <a href="support.html" title="support"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

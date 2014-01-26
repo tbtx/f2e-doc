@@ -165,6 +165,8 @@ extend(o) => 添加类属性或方法
 
 proxy(fn) => 保证fn调用时的this为当前class，主要用于事件处理程序
 
+Implements(arr) => 见紧接着的classify
+
 传入properties实际就是调用include
 
     var Slide = new Class();

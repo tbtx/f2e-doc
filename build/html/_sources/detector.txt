@@ -1,0 +1,31 @@
+detector
+===============
+
+客户端信息识别模块，用于自动识别用户使用的客户端环境。
+
+额外提供isIE6属性,isMobile属性，decideMobile(ua)方法来判断mobile类型
+
+* 硬件设备
+* 操作系统
+* 浏览器
+* 浏览器渲染引擎
+
+     detector.browser.name === "chrome" // true
+
+     // 判断浏览器名方法 2.
+     !!detector.browser.ie // false
+
+     // 判断老旧浏览器
+     if(detector.browser.ie &amp;&amp; detector.browser.version &lt; 8){
+         alert("你的浏览器太老了。");
+     }
+
+     // 判断 Trident 4(IE8) 以下版本浏览器引擎
+     if(detector.engine.trident &amp;&amp; detector.engine.mode &lt; 4){
+         // hack code.
+     }
+
+     // 收集客户端详细信息
+     detector.browser.name + "/" + detector.browser.fullVersion;
+
+详细文档(https://github.com/aralejs/detector)

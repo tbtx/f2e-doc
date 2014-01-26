@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>events &mdash; tbtx 0.1.0 documentation</title>
+    <title>date &mdash; tbtx 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="aspect" href="aspect.html" />
-    <link rel="prev" title="lang" href="lang.html" /> 
+    <link rel="prev" title="cookie" href="cookie.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +34,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="aspect.html" title="aspect"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="lang.html" title="lang"
+          <a href="cookie.html" title="cookie"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -49,46 +45,45 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="events">
-<h1>events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h1>
-<p>提供基本的事件添加、移除和触发功能。</p>
-<p>默认已经mixTo tbtx</p>
-<p>并且可以通过tbtx.on(&#8220;window.resize&#8221;)和tbtx.on(&#8220;window.scroll&#8221;)监听throttle过后的函数</p>
-<p>使用 Events 有两种方式，一种是直接实例化：</p>
+  <div class="section" id="date">
+<h1>date<a class="headerlink" href="#date" title="Permalink to this headline">¶</a></h1>
+<p>日期相关</p>
+<p>date均可以为字符串，数字或者date对象</p>
+<ul class="simple">
+<li>formatDate([format[, date]])</li>
+</ul>
+<p>&#8220;Y-m-d h:i:s&#8221; 按format格式化日期</p>
+<ul class="simple">
+<li>normalDate(date)</li>
+</ul>
+<p>将date转为对象，包含Y-M-D-H-I-S-y-m-d-h-i-s</p>
+<ul class="simple">
+<li>ago(date1[, date2])</li>
+</ul>
+<p>对比两个时间，输出刚刚/分钟前/小时前/天前/月前/年前</p>
 <blockquote>
-<div><p>var object = new tbtx.Events();</p>
-<dl class="docutils">
-<dt>object.on(&#8216;expand&#8217;, function() {</dt>
-<dd>alert(&#8216;expanded&#8217;);</dd>
+<div><dl class="docutils">
+<dt>/*</dt>
+<dd><ul class="first simple">
+<li>将日期格式化成字符串</li>
+<li>Y - 4位年</li>
+<li>y - 2位年</li>
+<li>M - 不补0的月,</li>
+<li>m - 补0的月</li>
+<li>D - 不补0的日期</li>
+<li>d - 补0的日期</li>
+<li>H - 不补0的小时</li>
+<li>h - 补0的小时</li>
+<li>I - 不补0的分</li>
+<li>i - 补0的分</li>
+<li>S - 不补0的秒</li>
+<li>s - 补0的秒</li>
+<li>毫秒暂不支持</li>
+<li>&#64;return：指定格式的字符串</li>
+</ul>
+<p class="last"><a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+</dd>
 </dl>
-<p>});</p>
-<p>object.trigger(&#8216;expand&#8217;);</p>
-</div></blockquote>
-<p>另一种是将 Events 混入（mix-in）到其他类中：</p>
-<blockquote>
-<div><p>function Dog() {}</p>
-<p>tbtx.Events.mixTo(Dog);</p>
-<dl class="docutils">
-<dt>Dog.prototype.sleep = function() {</dt>
-<dd>this.trigger(&#8216;sleep&#8217;);</dd>
-</dl>
-<p>};</p>
-<p>var dog = new Dog();</p>
-<dl class="docutils">
-<dt>dog.on(&#8216;sleep&#8217;, function() {</dt>
-<dd>alert(&#8216;狗狗睡得好香呀&#8217;);</dd>
-</dl>
-<p>});</p>
-<p>dog.sleep();</p>
-</div></blockquote>
-<p>通过new tbtx.Class创建的类，或者对象或类classify之后, 去Implements Events，也可以获得on/off/trigger的能力</p>
-<blockquote>
-<div><p>var o = {};</p>
-<p>tbtx.classify(o);</p>
-<p>o.Implements(tbtx.Events);   // o对象即拥有了on和off方法</p>
-<p>// 或者</p>
-<p>var App = new tbtx.Class();</p>
-<p>App.Implements(tbtx.Events)</p>
 </div></blockquote>
 </div>
 
@@ -99,14 +94,11 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lang.html"
-                        title="previous chapter">lang</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="aspect.html"
-                        title="next chapter">aspect</a></p>
+  <p class="topless"><a href="cookie.html"
+                        title="previous chapter">cookie</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/events.txt"
+    <li><a href="_sources/date.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -133,10 +125,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="aspect.html" title="aspect"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="lang.html" title="lang"
+          <a href="cookie.html" title="cookie"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
