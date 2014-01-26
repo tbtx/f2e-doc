@@ -17,6 +17,8 @@ success(response)
 
 fail(code, response)
 
+progress(-2)
+
 success是返回码为100时，其余均为失败(其中客户端没有请求成功为-1)，如果正在处理中，则notify(-2)后返回promise
 
 * initMiiee()

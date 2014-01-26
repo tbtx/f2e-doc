@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>overlay &mdash; tbtx 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="tbtx 0.1.0 documentation" href="../index.html" />
+    <link rel="prev" title="miiee" href="../miiee.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../miiee.html" title="miiee"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="overlay">
+<h1>overlay<a class="headerlink" href="#overlay" title="Permalink to this headline">¶</a></h1>
+<p>overlay 背景遮罩层</p>
+<p>依赖jquery和tbtx.js</p>
+<p>base/js/component/overlay.js</p>
+<p>tbtx.Overlay 全屏遮罩</p>
+<p>tbtx.Mask 背景遮罩</p>
+<blockquote>
+<div><p>// 获取overlay实例
+var o = new tbtx.Overlay(option);</p>
+<p>o.show();</p>
+<p>o.hide();</p>
+</div></blockquote>
+</div>
+<div class="section" id="option">
+<h1>option<a class="headerlink" href="#option" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>element: dom元素</p>
+<p>or</p>
+<p>template: &#8220;&lt;div&gt;&lt;/div&gt;&#8221;  // 通过模板生成
+width: null,</p>
+<p>height: null,</p>
+<p>className: &#8220;tbtx-mask&#8221;,</p>
+<p>// 基本属性
+visible: false,</p>
+<p>parentNode: DEFAULT_PARENT_NODE,</p>
+<p>// 定位配置
+align: {</p>
+<blockquote>
+<div><p>// element 的定位点，默认为左上角
+selfXY: [ 0, 0 ],</p>
+<p>// 基准定位元素，默认为当前可视区域
+baseElement: VIEWPORT,</p>
+<p>// 基准定位元素的定位点，默认为左上角
+baseXY: [ 0, 0 ]</p>
+</div></blockquote>
+<p>},</p>
+<p>// 是否点击关闭遮罩
+hideOnClick: false</p>
+<p>zIndex
+opacity
+backgroundColor</p>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">overlay</a></li>
+<li><a class="reference internal" href="#option">option</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../miiee.html"
+                        title="previous chapter">miiee</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/component/overlay.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../miiee.html" title="miiee"
+             >previous</a> |</li>
+        <li><a href="../index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, zenxds.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

@@ -29,6 +29,14 @@ Contents:
    msg
    miiee
 
+component
+===============
+
+.. toctree::
+   :maxdepth: 2
+
+   component/overlay
+
 * seed: 开始文件
 * cache: 缓存
 * lang: 语言扩展
