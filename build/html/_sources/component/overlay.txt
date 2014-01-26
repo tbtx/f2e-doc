@@ -19,13 +19,14 @@ tbtx.Mask 背景遮罩
     o.hide();
 
 option
-======
+------
 
     element: dom元素
 
     or
 
     template: "<div></div>"  // 通过模板生成
+
     width: null,
 
     height: null,
@@ -55,5 +56,7 @@ option
     hideOnClick: false
 
     zIndex
+
     opacity
+
     backgroundColor
