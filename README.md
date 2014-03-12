@@ -5,3 +5,6 @@ Sphinx 运行前需要安装 Python 2.4 或者 Python 3.1 , 以及 docutils 和 
 如果用easy_install 安装docutils,Jinja2，Pygments失败则分别源码安装
 
 [readthedocs](http://tbtx.readthedocs.org)
+
+    make html
+    python -m SimpleHTTPServer 9527

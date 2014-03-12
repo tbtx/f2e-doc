@@ -11,6 +11,8 @@ aspect
 
 在 object[methodName] 方法执行后，再执行 callback 函数。
 
+::
+
     var o = {};
 
     tbtx.classify(o);

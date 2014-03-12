@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="loader" href="loader.html" />
-    <link rel="prev" title="path" href="path.html" /> 
+    <link rel="next" title="events" href="events.html" />
+    <link rel="prev" title="pin" href="pin.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="loader.html" title="loader"
+          <a href="events.html" title="events"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="path.html" title="path"
+          <a href="pin.html" title="pin"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -56,16 +56,6 @@
 <li>getWindow/getHead/getBody/getDocument</li>
 </ul>
 <p>返回相应的jQuery对象</p>
-<ul class="simple">
-<li>loadCss(url, callback, charset)</li>
-</ul>
-<p>加载css文件， 除了不支持数组，调用同下</p>
-<ul class="simple">
-<li>loadScript(url, callback, charset)</li>
-</ul>
-<p>加载js, 可指定成功的回调函数,返回jQuery deferred, 可以使用loadScript(url).done(callback)</p>
-<p>url可以是一个数组，会按照数组中的脚本顺序加载，全部加载完成执行callback</p>
-<p>url可以是miee/js/m.js，会自动加上cdn的url</p>
 <ul class="simple">
 <li>pageHeight()/pageWidth()</li>
 </ul>
@@ -132,6 +122,10 @@
 <p>selector为context，监听selector下的.J-fly-to-top来回到顶部</p>
 <p>没有找到.J-fly-to-top则监听在selector上</p>
 <p>在selector上使用data-offset, 滚动大于该值则selector显示，小于该值则隐藏</p>
+<ul class="simple">
+<li>embedPlayer(allConfig)</li>
+</ul>
+<p>嵌入淘宝视频</p>
 </div>
 
 
@@ -141,11 +135,11 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="path.html"
-                        title="previous chapter">path</a></p>
+  <p class="topless"><a href="pin.html"
+                        title="previous chapter">pin</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="loader.html"
-                        title="next chapter">loader</a></p>
+  <p class="topless"><a href="events.html"
+                        title="next chapter">events</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/dom.txt"
@@ -175,10 +169,10 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="loader.html" title="loader"
+          <a href="events.html" title="events"
              >next</a> |</li>
         <li class="right" >
-          <a href="path.html" title="path"
+          <a href="pin.html" title="pin"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

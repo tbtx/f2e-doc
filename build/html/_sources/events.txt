@@ -9,6 +9,8 @@ events
 
 使用 Events 有两种方式，一种是直接实例化：
 
+::
+
     var object = new tbtx.Events();
 
     object.on('expand', function() {
@@ -18,6 +20,8 @@ events
     object.trigger('expand');
 
 另一种是将 Events 混入（mix-in）到其他类中：
+
+::
 
     function Dog() {}
 
@@ -36,6 +40,8 @@ events
     dog.sleep();
 
 通过new tbtx.Class创建的类，或者对象或类classify之后, 去Implements Events，也可以获得on/off/trigger的能力
+
+::
 
     var o = {};
 

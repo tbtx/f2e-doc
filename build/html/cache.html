@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
     <link rel="next" title="lang" href="lang.html" />
-    <link rel="prev" title="seed" href="seed.html" /> 
+    <link rel="prev" title="promise" href="promise.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +38,7 @@
           <a href="lang.html" title="lang"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="seed.html" title="seed"
+          <a href="promise.html" title="promise"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -51,17 +51,21 @@
             
   <div class="section" id="cache">
 <h1>cache<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h1>
-<ul>
-<li><p class="first">get/set/remove/getAll/clear</p>
-<blockquote>
-<div><p>var cache = new tbtx.Cache();
-cache.get/set/...</p>
-</div></blockquote>
-</li>
-<li><p class="first">data(key[, valye])/removeData(key)</p>
-</li>
+<ul class="simple">
+<li>get/set/remove/getAll/clear</li>
 </ul>
-<p>实际上使用的是cache的一个实例</p>
+<div class="highlight-python"><pre>var cache = new tbtx.Cache();
+cache.get/set/...</pre>
+</div>
+<ul class="simple">
+<li>data(key[, value])/removeData(key)</li>
+</ul>
+<dl class="docutils">
+<dt>::</dt>
+<dd>// 实际上内部使用的是cache的一个实例
+tbtx.data()
+tbtx.removeDate()</dd>
+</dl>
 <p>目前默认data的为当前的url信息</p>
 <blockquote>
 <div>tbtx.data(&#8220;urlInfo&#8221;)</div></blockquote>
@@ -74,8 +78,8 @@ cache.get/set/...</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="seed.html"
-                        title="previous chapter">seed</a></p>
+  <p class="topless"><a href="promise.html"
+                        title="previous chapter">promise</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="lang.html"
                         title="next chapter">lang</a></p>
@@ -111,7 +115,7 @@ cache.get/set/...</p>
           <a href="lang.html" title="lang"
              >next</a> |</li>
         <li class="right" >
-          <a href="seed.html" title="seed"
+          <a href="promise.html" title="promise"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

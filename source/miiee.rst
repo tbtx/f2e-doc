@@ -36,3 +36,7 @@ success是返回码为100时，其余均为失败(其中客户端没有请求成
 * addToFavourite(title, url)
 
 加入收藏夹
+
+* loadTanx(container, tanxid)
+
+加载tanx广告

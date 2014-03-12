@@ -35,6 +35,10 @@ seed
 
 debug mod
 
+* $
+
+对jQuery或者Zepto的引用
+
 * uniqueCid()
 
 生成客户端唯一cid

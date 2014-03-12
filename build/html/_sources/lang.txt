@@ -5,13 +5,21 @@ lang
 
 判断是否是非空字符串
 
+* trim(str)
+
+去除字符串两端的空格
+
+* bind(fn, context)
+
+绑定fn的this为context, 多用于事件处理，定时器等
+
 * isPlainObject(o)
 
 相对于$.isPlainObject(), 判断一个对象是否为纯对象
 
 * isPending(val)
 
-判断一个deferred对象是否正在处理中
+判断一个jQuery deferred对象是否正在处理中
 
 * isArray/isString/isFunction/is...
 
@@ -29,6 +37,8 @@ lang
 * singleton(fn, context)
 
 单例模式, 多次调用返回同一实例
+
+::
 
     // 唯一实例
 
@@ -63,6 +73,8 @@ lang
 
 延迟执行函数，对setTimeout和setInterval的一个封装
 
+::
+
     /**
      * [later description]
      * @param  {Function} fn       要执行的函数
@@ -84,9 +96,13 @@ lang
 
 遍历对象或数组，执行函数
 
-    fn(item, index, arr)
+::
 
-    return false终止执行
+    tbtx.each(array, function(item, index, arr) {
+        // 终止执行
+        return false;
+    }
+
 
 * indexOf(arr, item)
 
@@ -106,6 +122,8 @@ ES5 map,filter,reduce,every,some
 * sizeof(str)
 
 返回str的长度，ascii的算1，ascii之外的算2
+
+::
 
     expect(tbtx.sizeof("abc")).toEqual(3);
 
@@ -127,6 +145,8 @@ ES5 map,filter,reduce,every,some
 
 命名空间，创建相应命名对象
 
+::
+
     tbtx.namespace("app")
 
     tbtx.app => {}
@@ -134,6 +154,8 @@ ES5 map,filter,reduce,every,some
 * startsWith(str, prefix)
 
 判断字符串是否以prefix开头
+
+::
 
     tbtx.startsWith("abc", "a") => true
 
@@ -168,6 +190,8 @@ proxy(fn) => 保证fn调用时的this为当前class，主要用于事件处理�
 Implements(arr) => 见紧接着的classify
 
 传入properties实际就是调用include
+
+::
 
     var Slide = new Class();
 
@@ -207,6 +231,8 @@ Implements(arr) => 见紧接着的classify
 
 Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自身到 target上
 
+::
+
     var o = {};
 
     tbtx.classify(o);
@@ -237,6 +263,8 @@ Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自
 
 调用同样的函数并且传入的参数大部分都相同的时候，就是考虑柯里化的理想场景
 
+::
+
     var add = function(num1, num2) {
         return num2 + num1;
     };
@@ -251,6 +279,8 @@ Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自
 
 模板替换
 
+::
+
     substitute("my name is {{ name }}", {name: 'alex'}) => my name is alex
 
 * param(o, sep, eq, serializeArray)
@@ -264,6 +294,8 @@ query字符串转为对象, =号和?号都可以自定义
 * parseUrl(url)
 
 解析url，返回url信息，url默认为location.href
+
+::
 
     // 返回对象
     scheme: 协议，如http

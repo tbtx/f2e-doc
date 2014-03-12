@@ -3,12 +3,17 @@ cache
 
 * get/set/remove/getAll/clear
 
+::
+
     var cache = new tbtx.Cache();
     cache.get/set/...
 
-* data(key[, valye])/removeData(key)
+* data(key[, value])/removeData(key)
 
-实际上使用的是cache的一个实例
+::
+    // 实际上内部使用的是cache的一个实例
+    tbtx.data()
+    tbtx.removeDate()
 
 目前默认data的为当前的url信息
 

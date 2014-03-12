@@ -53,36 +53,36 @@
 <h1>detector<a class="headerlink" href="#detector" title="Permalink to this headline">¶</a></h1>
 <p>客户端信息识别模块，用于自动识别用户使用的客户端环境。</p>
 <p>额外提供isIE6属性,isMobile属性，decideMobile(ua)方法来判断mobile类型</p>
-<ul>
-<li><p class="first">硬件设备</p>
-</li>
-<li><p class="first">操作系统</p>
-</li>
-<li><p class="first">浏览器</p>
-</li>
-<li><p class="first">浏览器渲染引擎</p>
-<blockquote>
-<div><p>detector.browser.name === &#8220;chrome&#8221; // true</p>
-<p>// 判断浏览器名方法 2.
-!!detector.browser.ie // false</p>
-<p>// 判断老旧浏览器
-if(detector.browser.ie &amp;amp;&amp;amp; detector.browser.version &amp;lt; 8){</p>
-<blockquote>
-<div><p>alert(&#8220;你的浏览器太老了。&#8221;);</p>
-</div></blockquote>
-<p>}</p>
-<p>// 判断 Trident 4(IE8) 以下版本浏览器引擎
-if(detector.engine.trident &amp;amp;&amp;amp; detector.engine.mode &amp;lt; 4){</p>
-<blockquote>
-<div><p>// hack code.</p>
-</div></blockquote>
-<p>}</p>
-<p>// 收集客户端详细信息
-detector.browser.name + &#8220;/&#8221; + detector.browser.fullVersion;</p>
-</div></blockquote>
-</li>
+<ul class="simple">
+<li>硬件设备</li>
+<li>操作系统</li>
+<li>浏览器</li>
+<li>浏览器渲染引擎</li>
 </ul>
+<div class="highlight-python"><pre>detector.browser.name === "chrome" // true
+
+// 判断浏览器名方法 2.
+!!detector.browser.ie // false
+
+// 判断老旧浏览器
+if(detector.browser.ie &amp;amp;&amp;amp; detector.browser.version &amp;lt; 8){
+    alert("你的浏览器太老了。");
+}
+
+// 判断 Trident 4(IE8) 以下版本浏览器引擎
+if(detector.engine.trident &amp;amp;&amp;amp; detector.engine.mode &amp;lt; 4){
+    // hack code.
+}
+
+// 收集客户端详细信息
+detector.browser.name + "/" + detector.browser.fullVersion;</pre>
+</div>
 <p>详细文档(<a class="reference external" href="https://github.com/aralejs/detector">https://github.com/aralejs/detector</a>)</p>
+<p>除此之外增加</p>
+<div class="highlight-python"><pre>tbtx.isIE6
+tbtx.isMobile
+tbtx.decideMobile(ua)       // 返回对应的mobile</pre>
+</div>
 </div>
 
 

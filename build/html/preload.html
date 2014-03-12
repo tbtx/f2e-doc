@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>support &mdash; tbtx 0.1.0 documentation</title>
+    <title>preload &mdash; tbtx 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,9 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="date" href="date.html" />
-    <link rel="prev" title="cookie" href="cookie.html" /> 
+    <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,12 +32,6 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="date.html" title="date"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="cookie.html" title="cookie"
-             accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -49,13 +41,17 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="support">
-<h1>support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h1>
-<p>浏览器特性支持</p>
-<p>tbtx.support.xx</p>
-<ul class="simple">
-<li>placeholder: 是否支持placeholder</li>
-</ul>
+  <div class="section" id="preload">
+<h1>preload<a class="headerlink" href="#preload" title="Permalink to this headline">¶</a></h1>
+<p>提供tbtx.ready, 对于没有引入jQuery的环境去引入jQuery</p>
+<div class="highlight-python"><pre>tbtx.ready(function(S) {
+    // jquery
+    var $ = S.$;
+
+    jQuery(document)
+    $(document)
+});</pre>
+</div>
 </div>
 
 
@@ -64,15 +60,9 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="cookie.html"
-                        title="previous chapter">cookie</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="date.html"
-                        title="next chapter">date</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/support.txt"
+    <li><a href="_sources/preload.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -98,12 +88,6 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="date.html" title="date"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="cookie.html" title="cookie"
-             >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>

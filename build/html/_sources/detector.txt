@@ -10,6 +10,8 @@ detector
 * 浏览器
 * 浏览器渲染引擎
 
+::
+
      detector.browser.name === "chrome" // true
 
      // 判断浏览器名方法 2.
@@ -29,3 +31,11 @@ detector
      detector.browser.name + "/" + detector.browser.fullVersion;
 
 详细文档(https://github.com/aralejs/detector)
+
+除此之外增加
+
+::
+
+    tbtx.isIE6
+    tbtx.isMobile
+    tbtx.decideMobile(ua)       // 返回对应的mobile

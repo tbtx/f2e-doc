@@ -7,18 +7,6 @@ dom操作
 
 返回相应的jQuery对象
 
-* loadCss(url, callback, charset)
-
-加载css文件， 除了不支持数组，调用同下
-
-* loadScript(url, callback, charset)
-
-加载js, 可指定成功的回调函数,返回jQuery deferred, 可以使用loadScript(url).done(callback)
-
-url可以是一个数组，会按照数组中的脚本顺序加载，全部加载完成执行callback
-
-url可以是miee/js/m.js，会自动加上cdn的url
-
 * pageHeight()/pageWidth()
 
 返回页面总的宽高， 相当于$(window).width()/height()
@@ -91,3 +79,7 @@ selector为context，监听selector下的.J-fly-to-top来回到顶部
 没有找到.J-fly-to-top则监听在selector上
 
 在selector上使用data-offset, 滚动大于该值则selector显示，小于该值则隐藏
+
+* embedPlayer(allConfig)
+
+嵌入淘宝视频

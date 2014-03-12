@@ -56,13 +56,21 @@
 </ul>
 <p>判断是否是非空字符串</p>
 <ul class="simple">
+<li>trim(str)</li>
+</ul>
+<p>去除字符串两端的空格</p>
+<ul class="simple">
+<li>bind(fn, context)</li>
+</ul>
+<p>绑定fn的this为context, 多用于事件处理，定时器等</p>
+<ul class="simple">
 <li>isPlainObject(o)</li>
 </ul>
 <p>相对于$.isPlainObject(), 判断一个对象是否为纯对象</p>
 <ul class="simple">
 <li>isPending(val)</li>
 </ul>
-<p>判断一个deferred对象是否正在处理中</p>
+<p>判断一个jQuery deferred对象是否正在处理中</p>
 <ul class="simple">
 <li>isArray/isString/isFunction/is...</li>
 <li>type(o) =&gt; string/function/....</li>
@@ -80,24 +88,25 @@
 <li>singleton(fn, context)</li>
 </ul>
 <p>单例模式, 多次调用返回同一实例</p>
-<blockquote>
-<div><p>// 唯一实例</p>
-<dl class="docutils">
-<dt>var getBody = tbtx.singleton(function() {</dt>
-<dd>return document.body;</dd>
-</dl>
-<p>});</p>
-<p>getBody() === getBody() // true</p>
-<p>// 或者对于只执行一次的初始化函数</p>
-<dl class="docutils">
-<dt>var init = tbtx.singleton(function() {</dt>
-<dd>console.log(&#8220;init&#8221;);
-return true;</dd>
-</dl>
-<p>});</p>
-<p>init() =&gt; init</p>
-<p>init() =&gt; 无输出</p>
-</div></blockquote>
+<div class="highlight-python"><pre>// 唯一实例
+
+var getBody = tbtx.singleton(function() {
+    return document.body;
+});
+
+getBody() === getBody() // true
+
+// 或者对于只执行一次的初始化函数
+
+var init = tbtx.singleton(function() {
+    console.log("init");
+    return true;
+});
+
+init() =&gt; init
+
+init() =&gt; 无输出</pre>
+</div>
 <ul class="simple">
 <li>ucfirst(val)</li>
 </ul>
@@ -112,34 +121,32 @@ return true;</dd>
 <li>later(fn, when, periodic, context, data)</li>
 </ul>
 <p>延迟执行函数，对setTimeout和setInterval的一个封装</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>/**</dt>
-<dd><ul class="first simple">
-<li>[later description]</li>
-<li>&#64;param  {Function} fn       要执行的函数</li>
-<li>&#64;param  {number}   when     延迟时间</li>
-<li>&#64;param  {boolean}   periodic 是否周期执行</li>
-<li>&#64;param  {object}   context  context</li>
-<li>&#64;param  {Array}   data     传递的参数</li>
-<li>&#64;return {object}            timer，cancel() and interval</li>
-</ul>
-<p class="last"><a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
-</dd>
-</dl>
-<p>later: function (fn, when, periodic, context, data) {}</p>
-<p>var timer = tbtx.later(function(){}, 500, true);</p>
-<p>timer.cancel() // 取消定时器</p>
-<p>timer.interval =&gt; true</p>
-</div></blockquote>
+<div class="highlight-python"><pre>/**
+ * [later description]
+ * @param  {Function} fn       要执行的函数
+ * @param  {number}   when     延迟时间
+ * @param  {boolean}   periodic 是否周期执行
+ * @param  {object}   context  context
+ * @param  {Array}   data     传递的参数
+ * @return {object}            timer，cancel() and interval
+ */
+later: function (fn, when, periodic, context, data) {}
+
+var timer = tbtx.later(function(){}, 500, true);
+
+timer.cancel() // 取消定时器
+
+timer.interval =&gt; true</pre>
+</div>
 <ul class="simple">
 <li>each(arr/object, fn, context)</li>
 </ul>
 <p>遍历对象或数组，执行函数</p>
-<blockquote>
-<div><p>fn(item, index, arr)</p>
-<p>return false终止执行</p>
-</div></blockquote>
+<div class="highlight-python"><pre>tbtx.each(array, function(item, index, arr) {
+    // 终止执行
+    return false;
+}</pre>
+</div>
 <ul class="simple">
 <li>indexOf(arr, item)</li>
 </ul>
@@ -160,10 +167,11 @@ return true;</dd>
 <li>sizeof(str)</li>
 </ul>
 <p>返回str的长度，ascii的算1，ascii之外的算2</p>
-<blockquote>
-<div><p>expect(tbtx.sizeof(&#8220;abc&#8221;)).toEqual(3);</p>
-<p>expect(tbtx.sizeof(&#8220;a汉字c&#8221;)).toEqual(6);</p>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">expect</span><span class="p">(</span><span class="n">tbtx</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">toEqual</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="n">expect</span><span class="p">(</span><span class="n">tbtx</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="s">&quot;a汉字c&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">toEqual</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li>keys(o)</li>
 </ul>
@@ -180,16 +188,16 @@ return true;</dd>
 <li>namespace(args)</li>
 </ul>
 <p>命名空间，创建相应命名对象</p>
-<blockquote>
-<div><p>tbtx.namespace(&#8220;app&#8221;)</p>
-<p>tbtx.app =&gt; {}</p>
-</div></blockquote>
+<div class="highlight-python"><pre>tbtx.namespace("app")
+
+tbtx.app =&gt; {}</pre>
+</div>
 <ul class="simple">
 <li>startsWith(str, prefix)</li>
 </ul>
 <p>判断字符串是否以prefix开头</p>
-<blockquote>
-<div>tbtx.startsWith(&#8220;abc&#8221;, &#8220;a&#8221;) =&gt; true</div></blockquote>
+<div class="highlight-python"><pre>tbtx.startsWith("abc", "a") =&gt; true</pre>
+</div>
 <ul class="simple">
 <li>endsWith(str, suffix)</li>
 </ul>
@@ -214,56 +222,59 @@ return true;</dd>
 <p>proxy(fn) =&gt; 保证fn调用时的this为当前class，主要用于事件处理程序</p>
 <p>Implements(arr) =&gt; 见紧接着的classify</p>
 <p>传入properties实际就是调用include</p>
-<blockquote>
-<div><p>var Slide = new Class();</p>
-<p>// 向类上添加静态属性</p>
-<dl class="docutils">
-<dt>Slide.extend({</dt>
-<dd>name: &#8216;slide&#8217;</dd>
-</dl>
-<p>});</p>
-<p>Slide.name =&gt;; &#8216;slide&#8217;</p>
-<p>// 向实例上添加属性,其中init方法会在实例化的时候自动调用,也可以使用Slide.fn或者prototype访问到类的原型对象</p>
-<dl class="docutils">
-<dt>Slide.include({</dt>
-<dd><dl class="first docutils">
-<dt>init: funciton(page) {</dt>
-<dd>this.page = page;</dd>
-</dl>
-<p>},</p>
-<dl class="docutils">
-<dt>sayPage: function() {</dt>
-<dd>return this.page;</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>});</p>
-<p>var s = new Slide(4);</p>
-<p>s.sayPage() =&gt; 4;</p>
-<p>// 继承
+<div class="highlight-python"><pre>var Slide = new Class();
+
+// 向类上添加静态属性
+
+Slide.extend({
+    name: 'slide'
+});
+
+Slide.name =&gt;; 'slide'
+
+// 向实例上添加属性,其中init方法会在实例化的时候自动调用,也可以使用Slide.fn或者prototype访问到类的原型对象
+
+Slide.include({
+    init: funciton(page) {
+        this.page = page;
+    },
+
+    sayPage: function() {
+        return this.page;
+    }
+});
+
+var s = new Slide(4);
+
+s.sayPage() =&gt; 4;
+
+// 继承
 var SpecialSlide = new Class(Slide);
 var s2 = new SpecialSlide(5);
 s2.page = 6;
-s2.sayPage() =&gt; 6</p>
-</div></blockquote>
+s2.sayPage() =&gt; 6</pre>
+</div>
 <ul class="simple">
 <li>classify(o)</li>
 </ul>
 <p>让一个类或者对象（先称其为target）拥有Implements方法</p>
 <p>Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自身到 target上</p>
-<blockquote>
-<div><p>var o = {};</p>
-<p>tbtx.classify(o);</p>
-<p>var Events = function(){};</p>
-<p>Events.prototype = {</p>
-<blockquote>
-<div><p>on: function(){},</p>
-<p>off: function(){}</p>
-</div></blockquote>
-<p>};</p>
-<p>o.Implements(Events);   // o对象即拥有了on和off方法</p>
-</div></blockquote>
+<div class="highlight-python"><pre>var o = {};
+
+tbtx.classify(o);
+
+var Events = function(){};
+
+Events.prototype = {
+
+    on: function(){},
+
+    off: function(){}
+
+};
+
+o.Implements(Events);   // o对象即拥有了on和off方法</pre>
+</div>
 <ul class="simple">
 <li>Now()</li>
 </ul>
@@ -277,22 +288,22 @@ s2.sayPage() =&gt; 6</p>
 </ul>
 <p>函数柯里化</p>
 <p>调用同样的函数并且传入的参数大部分都相同的时候，就是考虑柯里化的理想场景</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>var add = function(num1, num2) {</dt>
-<dd>return num2 + num1;</dd>
-</dl>
-<p>};</p>
-<p>var curriedAdd = S.curry(add, 5);</p>
-<p>curriedAdd(3) =&gt; 8  // 5 + 3</p>
-<p>curriedAdd(4) =&gt; 9  // 5 + 4</p>
-</div></blockquote>
+<div class="highlight-python"><pre>var add = function(num1, num2) {
+    return num2 + num1;
+};
+
+var curriedAdd = S.curry(add, 5);
+
+curriedAdd(3) =&gt; 8  // 5 + 3
+
+curriedAdd(4) =&gt; 9  // 5 + 4</pre>
+</div>
 <ul class="simple">
 <li>substitute(str, o, regexp)</li>
 </ul>
 <p>模板替换</p>
-<blockquote>
-<div>substitute(&#8220;my name is {{ name }}&#8221;, {name: &#8216;alex&#8217;}) =&gt; my name is alex</div></blockquote>
+<div class="highlight-python"><pre>substitute("my name is {{ name }}", {name: 'alex'}) =&gt; my name is alex</pre>
+</div>
 <ul class="simple">
 <li>param(o, sep, eq, serializeArray)</li>
 </ul>
@@ -305,14 +316,14 @@ s2.sayPage() =&gt; 6</p>
 <li>parseUrl(url)</li>
 </ul>
 <p>解析url，返回url信息，url默认为location.href</p>
-<blockquote>
-<div>// 返回对象
+<div class="highlight-python"><pre>// 返回对象
 scheme: 协议，如http
 domain: 域名，如miiee.taobao.com
 port: 端口，如8080
 path: 路径，如/themes
 query: 查询字符串
-fragment: 锚点</div></blockquote>
+fragment: 锚点</pre>
+</div>
 <ul class="simple">
 <li>getFragment([url])</li>
 </ul>

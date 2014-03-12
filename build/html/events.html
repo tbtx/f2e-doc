@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
     <link rel="next" title="aspect" href="aspect.html" />
-    <link rel="prev" title="lang" href="lang.html" /> 
+    <link rel="prev" title="dom" href="dom.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +38,7 @@
           <a href="aspect.html" title="aspect"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="lang.html" title="lang"
+          <a href="dom.html" title="dom"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -55,41 +55,44 @@
 <p>默认已经mixTo tbtx</p>
 <p>并且可以通过tbtx.on(&#8220;window.resize&#8221;)和tbtx.on(&#8220;window.scroll&#8221;)监听throttle过后的函数</p>
 <p>使用 Events 有两种方式，一种是直接实例化：</p>
-<blockquote>
-<div><p>var object = new tbtx.Events();</p>
-<dl class="docutils">
-<dt>object.on(&#8216;expand&#8217;, function() {</dt>
-<dd>alert(&#8216;expanded&#8217;);</dd>
-</dl>
-<p>});</p>
-<p>object.trigger(&#8216;expand&#8217;);</p>
-</div></blockquote>
+<div class="highlight-python"><pre>var object = new tbtx.Events();
+
+object.on('expand', function() {
+    alert('expanded');
+});
+
+object.trigger('expand');</pre>
+</div>
 <p>另一种是将 Events 混入（mix-in）到其他类中：</p>
-<blockquote>
-<div><p>function Dog() {}</p>
-<p>tbtx.Events.mixTo(Dog);</p>
-<dl class="docutils">
-<dt>Dog.prototype.sleep = function() {</dt>
-<dd>this.trigger(&#8216;sleep&#8217;);</dd>
-</dl>
-<p>};</p>
-<p>var dog = new Dog();</p>
-<dl class="docutils">
-<dt>dog.on(&#8216;sleep&#8217;, function() {</dt>
-<dd>alert(&#8216;狗狗睡得好香呀&#8217;);</dd>
-</dl>
-<p>});</p>
-<p>dog.sleep();</p>
-</div></blockquote>
+<div class="highlight-python"><pre>function Dog() {}
+
+tbtx.Events.mixTo(Dog);
+
+Dog.prototype.sleep = function() {
+    this.trigger('sleep');
+};
+
+var dog = new Dog();
+
+dog.on('sleep', function() {
+    alert('狗狗睡得好香呀');
+});
+
+dog.sleep();</pre>
+</div>
 <p>通过new tbtx.Class创建的类，或者对象或类classify之后, 去Implements Events，也可以获得on/off/trigger的能力</p>
-<blockquote>
-<div><p>var o = {};</p>
-<p>tbtx.classify(o);</p>
-<p>o.Implements(tbtx.Events);   // o对象即拥有了on和off方法</p>
-<p>// 或者</p>
-<p>var App = new tbtx.Class();</p>
-<p>App.Implements(tbtx.Events)</p>
-</div></blockquote>
+<div class="highlight-python"><pre>var o = {};
+
+tbtx.classify(o);
+
+o.Implements(tbtx.Events);   // o对象即拥有了on和off方法
+
+// 或者
+
+var App = new tbtx.Class();
+
+App.Implements(tbtx.Events)</pre>
+</div>
 </div>
 
 
@@ -99,8 +102,8 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lang.html"
-                        title="previous chapter">lang</a></p>
+  <p class="topless"><a href="dom.html"
+                        title="previous chapter">dom</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="aspect.html"
                         title="next chapter">aspect</a></p>
@@ -136,7 +139,7 @@
           <a href="aspect.html" title="aspect"
              >next</a> |</li>
         <li class="right" >
-          <a href="lang.html" title="lang"
+          <a href="dom.html" title="dom"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
