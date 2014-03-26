@@ -13,8 +13,10 @@ Contents:
 
    seed
    promise
+   json2
    cache
    lang
+   uri
    loader
    preload
    cookie
@@ -44,8 +46,10 @@ Detail
 
 * seed: 开始文件
 * promise: promise实现
+* json2: JSON实现
 * cache: 缓存
 * lang: 语言扩展
+* uri: url相关
 * loader: 组件加载
 * preload: 对于没有引入jQuery的环境去引入jQuery
 * cookie: cookie操作

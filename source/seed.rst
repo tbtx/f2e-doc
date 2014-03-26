@@ -27,13 +27,9 @@ seed
 
 静态资源地址前缀，会在后面根据tbtx.js所在目录进行重写，这里作为备用
 
-* _tbtx
+* config(name, value)
 
-存储之前的tbtx
-
-* debug
-
-debug mod
+配置，name可传为一个配置对象
 
 * $
 

@@ -67,6 +67,15 @@ attr指定属性名，默认data-max, suffix指定后缀，默认为三个点的
 
 初始化旺旺点灯, 加载旺旺和KISSY（如果KISSY没有加载的话）
 
+* lightWangWang(selector)
+
+旺旺点灯的另一种实现
+
+::
+
+    <span data-role="wangwang" data-nick="xx_tbtx" data-prompt="有事联系我"></span>
+    默认data-role="wangwang"的 会被替换成旺旺的状态
+
 * flash(selector[, flashColor[, bgColor]])
 
 闪烁一个元素, 用于文本框为空提示 -> tbtx.flash('input')

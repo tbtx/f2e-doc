@@ -40,3 +40,7 @@ success是返回码为100时，其余均为失败(其中客户端没有请求成
 * loadTanx(container, tanxid)
 
 加载tanx广告
+
+* initTaobaoSiteNav()
+
+初始化淘宝吊顶

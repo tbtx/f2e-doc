@@ -18,3 +18,5 @@ cache
 目前默认data的为当前的url信息
 
     tbtx.data("urlInfo")
+
+当调用userCheck接口登陆成功之后会 data user和userName

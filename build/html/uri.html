@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>seed &mdash; tbtx 0.1.0 documentation</title>
+    <title>uri &mdash; tbtx 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="promise" href="promise.html" />
-    <link rel="prev" title="tbtx F2E document" href="index.html" /> 
+    <link rel="next" title="request" href="loader.html" />
+    <link rel="prev" title="lang" href="lang.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="promise.html" title="promise"
+          <a href="loader.html" title="request"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="tbtx F2E document"
+          <a href="lang.html" title="lang"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -49,43 +49,67 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="seed">
-<h1>seed<a class="headerlink" href="#seed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="uri">
+<h1>uri<a class="headerlink" href="#uri" title="Permalink to this headline">¶</a></h1>
+<p>uri相关</p>
 <ul class="simple">
-<li>log(msg, cat, src)</li>
+<li>Query类</li>
 </ul>
-<p>在log环境下输出log信息，避免因为忘记删除log语句而引发错误</p>
-<blockquote>
-<div><p>log(msg) =&amp;gt; msg</p>
-<p>&#64;param cat 消息类型，如error, info, warm等
-log(msg, cat) 如log(&#8216;hello&#8217;, &#8216;error&#8217;)</p>
-<p>&#64;param src: 消息来源
-log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&#8217;) =&amp;gt; pageA: hello</p>
-</div></blockquote>
+<p>提供查询字符串的相关操作</p>
+<div class="highlight-python"><pre>var query = new Query("name=123&amp;age=12");
+
+query.get("name") =&gt; 123
+query.get() =&gt; {name: 123, age: 12}
+query.keys()
+query.set(key, value)
+query.remove(key)
+query.add(key, value)
+query.toString() =&gt; 返回新的查询字符串</pre>
+</div>
 <ul class="simple">
-<li>global</li>
+<li>Uri类</li>
 </ul>
-<p>全局对象，浏览器下是window</p>
+<p>提供url解析</p>
+<p>Uri.getComponents(url)</p>
+<div class="highlight-python"><pre>解析url，返回url信息，url默认为location.href
+// 返回对象
+scheme: 协议，如http
+domain: 域名，如miiee.taobao.com
+port: 端口，如8080
+path: 路径，如/themes
+query: 查询字符串
+fragment: 锚点</pre>
+</div>
+<p>Uri实例</p>
+<div class="highlight-python"><pre>var uri = new Uri(url)
+uri.getFragment() // 获取锚点
+uri.toString() // 返回新的uri</pre>
+</div>
 <ul class="simple">
-<li>noop</li>
+<li>isUri(url)</li>
 </ul>
-<p>空函数, 相当于$.noop</p>
+<p>判断是否为uri</p>
 <ul class="simple">
-<li>staticUrl</li>
+<li>parseUrl(url)</li>
 </ul>
-<p>静态资源地址前缀，会在后面根据tbtx.js所在目录进行重写，这里作为备用</p>
+<p>相当于 Uri.getComponents(url)</p>
 <ul class="simple">
-<li>config(name, value)</li>
+<li>getFragment(url)</li>
 </ul>
-<p>配置，name可传为一个配置对象</p>
+<p>获取锚点值</p>
 <ul class="simple">
-<li>$</li>
+<li>getQueryParam([name[, url]])</li>
 </ul>
-<p>对jQuery或者Zepto的引用</p>
+<p>返回解析url的查询字符串的对象，如果提供name，则返回name的值</p>
 <ul class="simple">
-<li>uniqueCid()</li>
+<li>addQueryParam(name, value[, url])/addQueryParam(o[, url])</li>
 </ul>
-<p>生成客户端唯一cid</p>
+<p>对一个url增加查询参数，返回增加后的url</p>
+<p>如果有多个参数要增加可以传入一个对象</p>
+<ul class="simple">
+<li>removeQueryParam(name[, url])</li>
+</ul>
+<p>对一个url删除查询参数，返回删除参数后的url</p>
 </div>
 
 
@@ -95,14 +119,14 @@ log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">tbtx F2E document</a></p>
+  <p class="topless"><a href="lang.html"
+                        title="previous chapter">lang</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="promise.html"
-                        title="next chapter">promise</a></p>
+  <p class="topless"><a href="loader.html"
+                        title="next chapter">request</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/seed.txt"
+    <li><a href="_sources/uri.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -129,10 +153,10 @@ log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="promise.html" title="promise"
+          <a href="loader.html" title="request"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="tbtx F2E document"
+          <a href="lang.html" title="lang"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

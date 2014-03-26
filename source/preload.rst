@@ -5,9 +5,7 @@ preload
 
 ::
 
-    tbtx.ready(function(S) {
-        // jquery
-        var $ = S.$;
+    tbtx.ready(function(S, $) {
 
         jQuery(document)
         $(document)

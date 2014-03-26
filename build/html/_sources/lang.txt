@@ -1,17 +1,48 @@
 lang
 ===============
 
+首先实现了ES5的一些语言扩展
+
+包括:
+
+* Object.keys
+* String.prototype.trim
+* Function.prototype.bind
+* Date.now
+* Array.prototype.every
+* Array.prototype.filter
+* Array.prototype.forEach
+* Array.prototype.indexOf
+* Array.prototype.lastIndexOf
+* Array.prototype.map
+* Array.prototype.some
+* Array.prototype.reduce
+* Array.prototype.reduceRight
+* Array.isArray
+
+同时提供了tbtx接口，比如tbtx.trim(), tbtx.filter等等
+
+* Object.keys(o) 对应 S.keys(o)
+* Date.now 对应tbtx.Now
+* fn.bind -> tbtx.bind(fn, context)
+* "str".trim() -> tbtx.trim("str")
+
+注意：
+forEach, map, filter, every, some(fn, context) -> (object, fn, context)
+同时object可以传入对象, fn的参数为(value, key, object),对于filter和map，返回的也是对象，而非数组
+
+reduce reduceRight indexOf lastIndexOf不多说
+
+S.each 兼容原有实现，可以循环数组或对象，在fn里return false终止
+
+
 * isNotEmptyString(val)
 
 判断是否是非空字符串
 
-* trim(str)
+* isEmptyObject(o)
 
-去除字符串两端的空格
-
-* bind(fn, context)
-
-绑定fn的this为context, 多用于事件处理，定时器等
+判断是否是空对象
 
 * isPlainObject(o)
 
@@ -29,10 +60,6 @@ lang
 * inArray(arr, item)
 
 判断item是否在arr中
-
-* isUri(val)
-
-判断一个字符串是否是一个Uri
 
 * singleton(fn, context)
 
@@ -92,28 +119,6 @@ lang
 
     timer.interval => true
 
-*  each(arr/object, fn, context)
-
-遍历对象或数组，执行函数
-
-::
-
-    tbtx.each(array, function(item, index, arr) {
-        // 终止执行
-        return false;
-    }
-
-
-* indexOf(arr, item)
-
-数组或字符串的indeOf
-
-* map(arr, fn, context)
-* filter(arr, fn, context)
-* reduce(array, callback, initialValue)
-* every(arr, fn, context)
-* some(arr, fn, context)
-ES5 map,filter,reduce,every,some
 
 * unique(arr)
 
@@ -128,10 +133,6 @@ ES5 map,filter,reduce,every,some
     expect(tbtx.sizeof("abc")).toEqual(3);
 
     expect(tbtx.sizeof("a汉字c")).toEqual(6);
-
-* keys(o)
-
-返回对象的键的数组
 
 * makeArray(val)
 
@@ -290,38 +291,6 @@ Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自
 * unparam(str, sep, eq)
 
 query字符串转为对象, =号和?号都可以自定义
-
-* parseUrl(url)
-
-解析url，返回url信息，url默认为location.href
-
-::
-
-    // 返回对象
-    scheme: 协议，如http
-    domain: 域名，如miiee.taobao.com
-    port: 端口，如8080
-    path: 路径，如/themes
-    query: 查询字符串
-    fragment: 锚点
-
-* getFragment([url])
-
-返回url的锚点
-
-* getQueryParam([name[, url]])
-
-返回解析url的查询字符串的对象，如果提供name，则返回name的值
-
-* addQueryParam(name, value[, url])/addQueryParam(o[, url])
-
-对一个url增加查询参数，返回增加后的url
-
-如果有多个参数要增加可以传入一个对象
-
-* removeQueryParam(name[, url])
-
-对一个url删除查询参数，返回删除参数后的url
 
 * escapeHtml(text)
 

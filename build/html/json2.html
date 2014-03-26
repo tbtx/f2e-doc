@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>seed &mdash; tbtx 0.1.0 documentation</title>
+    <title>json2 &mdash; tbtx 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="promise" href="promise.html" />
-    <link rel="prev" title="tbtx F2E document" href="index.html" /> 
+    <link rel="next" title="cache" href="cache.html" />
+    <link rel="prev" title="promise" href="promise.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="promise.html" title="promise"
+          <a href="cache.html" title="cache"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="tbtx F2E document"
+          <a href="promise.html" title="promise"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -49,43 +49,11 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="seed">
-<h1>seed<a class="headerlink" href="#seed" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>log(msg, cat, src)</li>
-</ul>
-<p>在log环境下输出log信息，避免因为忘记删除log语句而引发错误</p>
-<blockquote>
-<div><p>log(msg) =&amp;gt; msg</p>
-<p>&#64;param cat 消息类型，如error, info, warm等
-log(msg, cat) 如log(&#8216;hello&#8217;, &#8216;error&#8217;)</p>
-<p>&#64;param src: 消息来源
-log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&#8217;) =&amp;gt; pageA: hello</p>
-</div></blockquote>
-<ul class="simple">
-<li>global</li>
-</ul>
-<p>全局对象，浏览器下是window</p>
-<ul class="simple">
-<li>noop</li>
-</ul>
-<p>空函数, 相当于$.noop</p>
-<ul class="simple">
-<li>staticUrl</li>
-</ul>
-<p>静态资源地址前缀，会在后面根据tbtx.js所在目录进行重写，这里作为备用</p>
-<ul class="simple">
-<li>config(name, value)</li>
-</ul>
-<p>配置，name可传为一个配置对象</p>
-<ul class="simple">
-<li>$</li>
-</ul>
-<p>对jQuery或者Zepto的引用</p>
-<ul class="simple">
-<li>uniqueCid()</li>
-</ul>
-<p>生成客户端唯一cid</p>
+  <div class="section" id="json2">
+<h1>json2<a class="headerlink" href="#json2" title="Permalink to this headline">¶</a></h1>
+<p>修正 JSON</p>
+<p>提供JSON.parse和JSON.stringify</p>
+<p>new Date().toJSON()</p>
 </div>
 
 
@@ -95,14 +63,14 @@ log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">tbtx F2E document</a></p>
-  <h4>Next topic</h4>
   <p class="topless"><a href="promise.html"
-                        title="next chapter">promise</a></p>
+                        title="previous chapter">promise</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cache.html"
+                        title="next chapter">cache</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/seed.txt"
+    <li><a href="_sources/json2.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -129,10 +97,10 @@ log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="promise.html" title="promise"
+          <a href="cache.html" title="cache"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="tbtx F2E document"
+          <a href="promise.html" title="promise"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

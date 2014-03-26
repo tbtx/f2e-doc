@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="events" href="events.html" />
+    <link rel="next" title="uri" href="uri.html" />
     <link rel="prev" title="cache" href="cache.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="events.html" title="events"
+          <a href="uri.html" title="uri"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="cache.html" title="cache"
@@ -51,18 +51,44 @@
             
   <div class="section" id="lang">
 <h1>lang<a class="headerlink" href="#lang" title="Permalink to this headline">¶</a></h1>
+<p>首先实现了ES5的一些语言扩展</p>
+<p>包括:</p>
+<ul class="simple">
+<li>Object.keys</li>
+<li>String.prototype.trim</li>
+<li>Function.prototype.bind</li>
+<li>Date.now</li>
+<li>Array.prototype.every</li>
+<li>Array.prototype.filter</li>
+<li>Array.prototype.forEach</li>
+<li>Array.prototype.indexOf</li>
+<li>Array.prototype.lastIndexOf</li>
+<li>Array.prototype.map</li>
+<li>Array.prototype.some</li>
+<li>Array.prototype.reduce</li>
+<li>Array.prototype.reduceRight</li>
+<li>Array.isArray</li>
+</ul>
+<p>同时提供了tbtx接口，比如tbtx.trim(), tbtx.filter等等</p>
+<ul class="simple">
+<li>Object.keys(o) 对应 S.keys(o)</li>
+<li>Date.now 对应tbtx.Now</li>
+<li>fn.bind -&gt; tbtx.bind(fn, context)</li>
+<li>&#8220;str&#8221;.trim() -&gt; tbtx.trim(&#8220;str&#8221;)</li>
+</ul>
+<p>注意：
+forEach, map, filter, every, some(fn, context) -&gt; (object, fn, context)
+同时object可以传入对象, fn的参数为(value, key, object),对于filter和map，返回的也是对象，而非数组</p>
+<p>reduce reduceRight indexOf lastIndexOf不多说</p>
+<p>S.each 兼容原有实现，可以循环数组或对象，在fn里return false终止</p>
 <ul class="simple">
 <li>isNotEmptyString(val)</li>
 </ul>
 <p>判断是否是非空字符串</p>
 <ul class="simple">
-<li>trim(str)</li>
+<li>isEmptyObject(o)</li>
 </ul>
-<p>去除字符串两端的空格</p>
-<ul class="simple">
-<li>bind(fn, context)</li>
-</ul>
-<p>绑定fn的this为context, 多用于事件处理，定时器等</p>
+<p>判断是否是空对象</p>
 <ul class="simple">
 <li>isPlainObject(o)</li>
 </ul>
@@ -80,10 +106,6 @@
 <li>inArray(arr, item)</li>
 </ul>
 <p>判断item是否在arr中</p>
-<ul class="simple">
-<li>isUri(val)</li>
-</ul>
-<p>判断一个字符串是否是一个Uri</p>
 <ul class="simple">
 <li>singleton(fn, context)</li>
 </ul>
@@ -139,27 +161,6 @@ timer.cancel() // 取消定时器
 timer.interval =&gt; true</pre>
 </div>
 <ul class="simple">
-<li>each(arr/object, fn, context)</li>
-</ul>
-<p>遍历对象或数组，执行函数</p>
-<div class="highlight-python"><pre>tbtx.each(array, function(item, index, arr) {
-    // 终止执行
-    return false;
-}</pre>
-</div>
-<ul class="simple">
-<li>indexOf(arr, item)</li>
-</ul>
-<p>数组或字符串的indeOf</p>
-<ul class="simple">
-<li>map(arr, fn, context)</li>
-<li>filter(arr, fn, context)</li>
-<li>reduce(array, callback, initialValue)</li>
-<li>every(arr, fn, context)</li>
-<li>some(arr, fn, context)</li>
-</ul>
-<p>ES5 map,filter,reduce,every,some</p>
-<ul class="simple">
 <li>unique(arr)</li>
 </ul>
 <p>数组去重</p>
@@ -172,10 +173,6 @@ timer.interval =&gt; true</pre>
 <span class="n">expect</span><span class="p">(</span><span class="n">tbtx</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="s">&quot;a汉字c&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">toEqual</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>keys(o)</li>
-</ul>
-<p>返回对象的键的数组</p>
 <ul class="simple">
 <li>makeArray(val)</li>
 </ul>
@@ -313,35 +310,6 @@ curriedAdd(4) =&gt; 9  // 5 + 4</pre>
 </ul>
 <p>query字符串转为对象, =号和?号都可以自定义</p>
 <ul class="simple">
-<li>parseUrl(url)</li>
-</ul>
-<p>解析url，返回url信息，url默认为location.href</p>
-<div class="highlight-python"><pre>// 返回对象
-scheme: 协议，如http
-domain: 域名，如miiee.taobao.com
-port: 端口，如8080
-path: 路径，如/themes
-query: 查询字符串
-fragment: 锚点</pre>
-</div>
-<ul class="simple">
-<li>getFragment([url])</li>
-</ul>
-<p>返回url的锚点</p>
-<ul class="simple">
-<li>getQueryParam([name[, url]])</li>
-</ul>
-<p>返回解析url的查询字符串的对象，如果提供name，则返回name的值</p>
-<ul class="simple">
-<li>addQueryParam(name, value[, url])/addQueryParam(o[, url])</li>
-</ul>
-<p>对一个url增加查询参数，返回增加后的url</p>
-<p>如果有多个参数要增加可以传入一个对象</p>
-<ul class="simple">
-<li>removeQueryParam(name[, url])</li>
-</ul>
-<p>对一个url删除查询参数，返回删除参数后的url</p>
-<ul class="simple">
 <li>escapeHtml(text)</li>
 </ul>
 <p>此函数会对以下符号进行 escape： &#8221; &lt; &gt; &amp; 和空格</p>
@@ -361,8 +329,8 @@ fragment: 锚点</pre>
   <p class="topless"><a href="cache.html"
                         title="previous chapter">cache</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="events.html"
-                        title="next chapter">events</a></p>
+  <p class="topless"><a href="uri.html"
+                        title="next chapter">uri</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/lang.txt"
@@ -392,7 +360,7 @@ fragment: 锚点</pre>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="events.html" title="events"
+          <a href="uri.html" title="uri"
              >next</a> |</li>
         <li class="right" >
           <a href="cache.html" title="cache"

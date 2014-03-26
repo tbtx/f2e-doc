@@ -15,6 +15,11 @@ url可以是miee/js/m.js，会自动加上静态文件前缀的url
 
 url可以是一个数组，会按照数组中的脚本顺序加载，全部加载完成执行callback
 
+* realpath
+
+::
+
+    realpath("http://test.com/a/./b/../c") ==> "http://test.com/a/c"
 
 loader
 ===============
