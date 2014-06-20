@@ -23,9 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
     <link rel="next" title="date" href="date.html" />
-    <link rel="prev" title="cookie" href="cookie.html" /> 
+    <link rel="prev" title="pin" href="position.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +39,7 @@
           <a href="date.html" title="date"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="cookie.html" title="cookie"
+          <a href="position.html" title="pin"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -54,8 +55,19 @@
 <p>浏览器特性支持</p>
 <p>tbtx.support.xx</p>
 <ul class="simple">
-<li>placeholder: 是否支持placeholder</li>
+<li>canvas: 是否支持canvas</li>
+<li>transition</li>
+<li>transform</li>
+<li>prefixed(prop) 输出带前缀的属性名</li>
 </ul>
+<div class="highlight-python"><pre>tbtx.prefixed("transform") -&gt; "WebkitTransform"</pre>
+</div>
+<ul class="simple">
+<li>testPropsAll(prop)</li>
+</ul>
+<p>测试是否支持某属性</p>
+<div class="highlight-python"><pre>tbtx.testPropsAll("transition") -&gt; true/false</pre>
+</div>
 </div>
 
 
@@ -65,8 +77,8 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="cookie.html"
-                        title="previous chapter">cookie</a></p>
+  <p class="topless"><a href="position.html"
+                        title="previous chapter">pin</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="date.html"
                         title="next chapter">date</a></p>
@@ -102,7 +114,7 @@
           <a href="date.html" title="date"
              >next</a> |</li>
         <li class="right" >
-          <a href="cookie.html" title="cookie"
+          <a href="position.html" title="pin"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

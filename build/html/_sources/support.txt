@@ -6,4 +6,20 @@ support
 tbtx.support.xx
 
 
-* placeholder: 是否支持placeholder
+* canvas: 是否支持canvas
+* transition
+* transform
+
+* prefixed(prop) 输出带前缀的属性名
+
+::
+
+    tbtx.prefixed("transform") -> "WebkitTransform"
+
+* testPropsAll(prop)
+
+测试是否支持某属性
+
+::
+
+    tbtx.testPropsAll("transition") -> true/false

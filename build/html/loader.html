@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>request &mdash; tbtx 0.1.0 documentation</title>
+    <title>loader &mdash; tbtx 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,8 +23,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="preload" href="preload.html" />
+    <link rel="next" title="cookie" href="cookie.html" />
     <link rel="prev" title="uri" href="uri.html" /> 
   </head>
   <body>
@@ -35,7 +36,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="preload.html" title="preload"
+          <a href="cookie.html" title="cookie"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="uri.html" title="uri"
@@ -49,36 +50,33 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="request">
-<h1>request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="loader">
+<h1>loader<a class="headerlink" href="#loader" title="Permalink to this headline">¶</a></h1>
+<p>遵循AMD规范的模块加载器</p>
 <ul class="simple">
-<li>tbtx.loadCss/loadScript(url, callback, charset)</li>
+<li>define/tbtx.define(id, deps, factory)</li>
 </ul>
-<p>url可以是miee/js/m.js，会自动加上静态文件前缀的url</p>
-<p>加载css,js, 返回deferred对象，即可以使用</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">tbtx</span><span class="o">.</span><span class="n">loadScript</span><span class="p">()</span><span class="o">.</span><span class="n">done</span><span class="o">/</span><span class="n">fail</span><span class="o">/</span><span class="n">always</span><span class="o">/</span><span class="n">then</span>
+<p>定义模块，开发者所关注</p>
+<p>id 模块id
+deps 模块依赖
+factory 模块内容</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">define</span><span class="p">(</span><span class="s">&quot;miiee/js/abc&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;jquery&quot;</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>对于 loadScript,</p>
-<p>url可以是一个数组，会按照数组中的脚本顺序加载，全部加载完成执行callback</p>
 <ul class="simple">
-<li>realpath</li>
+<li>tbtx.require(deps, callback)</li>
 </ul>
-<div class="highlight-python"><pre>realpath("http://test.com/a/./b/../c") ==&gt; "http://test.com/a/c"</pre>
+<p>加载模块，调用者所关注</p>
+<p>依赖模块的接口会作为参数传入callback</p>
+<div class="highlight-python"><pre>tbtx.require("jquery", function($) {
+
+});</pre>
 </div>
-</div>
-<div class="section" id="loader">
-<h1>loader<a class="headerlink" href="#loader" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>tbtx.require(names, callback, baseUrl)</li>
-</ul>
-<p>加载组件，如tbtx.require(&#8220;popup&#8221;, function(){}), 会自动处理依赖引入overlay和popup</p>
 <ul class="simple">
 <li>tbtx.Loader.config()</li>
 </ul>
-<p>可以配置的项有：</p>
-<div class="highlight-python"><pre>// 默认在组件目录， 一般不需要处理，特殊情况请在require时指定baseUrl
-baseUrl: S.staticUrl + "/base/js/component/",
+<p>加载器配置，可以配置的项有：</p>
+<div class="highlight-python"><pre>base: 基础路径，默认为静态文件顶层
 
 // 别名配置，与path配合，配置后可以直接require("jquery")
 alias: {
@@ -89,22 +87,18 @@ alias: {
 
 // 路径配置
 paths: {
-    miiee: '../../../miiee/js',
-    plugin: '../plugin',
-    gallery: '../gallery',
-    jquery: '../jquery'
+    'gallery': 'https://a.alipayobjects.com/gallery'
 },
 
-// 依赖关系配置
-deps: {
-    // 修正页面JS已引入的状态
-    drop: "overlay",
-    popup: "overlay",
-    tip: "drop",
-    templatable: "handlebars",
-    autocomplete: ["overlay", "templatable"]
-}</pre>
+// 映射配置
+map: [
+    ['http://example.com/js/app/', 'http://localhost/js/app/']
+],</pre>
 </div>
+<ul class="simple">
+<li>importStyle(cssText)</li>
+</ul>
+<p>加载css文本</p>
 </div>
 
 
@@ -113,18 +107,12 @@ deps: {
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">request</a></li>
-<li><a class="reference internal" href="#loader">loader</a></li>
-</ul>
-
   <h4>Previous topic</h4>
   <p class="topless"><a href="uri.html"
                         title="previous chapter">uri</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="preload.html"
-                        title="next chapter">preload</a></p>
+  <p class="topless"><a href="cookie.html"
+                        title="next chapter">cookie</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/loader.txt"
@@ -154,7 +142,7 @@ deps: {
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="preload.html" title="preload"
+          <a href="cookie.html" title="cookie"
              >next</a> |</li>
         <li class="right" >
           <a href="uri.html" title="uri"

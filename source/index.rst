@@ -11,27 +11,21 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   about
    seed
-   promise
-   json2
-   cache
    lang
    uri
    loader
-   preload
+   config
    cookie
+   events
+   position
    support
    date
-   detector
-   pin
-   dom
-   events
-   aspect
-   attrs
-   widget
+   request
    msg
-   path
-   miiee
+
+   widget
 
 component
 ===============
@@ -39,32 +33,25 @@ component
 .. toctree::
    :maxdepth: 2
 
-   component/overlay
-
 Detail
 ===============
 
+* about: 基本介绍
 * seed: 开始文件
-* promise: promise实现
-* json2: JSON实现
-* cache: 缓存
 * lang: 语言扩展
-* uri: url相关
-* loader: 组件加载
-* preload: 对于没有引入jQuery的环境去引入jQuery
+* uri: uri相关
+* loader: 模块加载
+* config: 模块加载器配置，路径与别名
 * cookie: cookie操作
-* support: 浏览器特性支持
+* events: 事件监听与触发，dom无关
+* position: 元素定位
+* support: 浏览器特性支持检测
 * date: 日期相关
-* detector: 客户端信息识别模块
-* pin: 元素定位
-* dom: dom操作
-* events: dom无关事件
-* aspect: 切面编程，提供before，after，在对象的方法之前或之后执行方法
-* attrs: 提供属性get/set，并且监听属性变化事件
+* request: ajax请求代理
+* msg: 消息Widget，代替alert
+
 * widget: 提供Base和UI组件
-* msg: 消息Widget
-* path: 路径
-* miiee: miiee相关
+
 
 Indices and tables
 ==================

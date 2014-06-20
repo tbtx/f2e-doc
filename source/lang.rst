@@ -28,8 +28,9 @@ lang
 * "str".trim() -> tbtx.trim("str")
 
 注意：
-forEach, map, filter, every, some(fn, context) -> (object, fn, context)
-同时object可以传入对象, fn的参数为(value, key, object),对于filter和map，返回的也是对象，而非数组
+forEach, map, filter, every, some(fn, context) 相应的参数变为 (object, fn, context)
+
+同时可以传入object和类数组对象，fn的参数为(value, key, object),对于filter和map，返回的也是对象，而非数组
 
 reduce reduceRight indexOf lastIndexOf不多说
 
@@ -40,26 +41,43 @@ S.each 兼容原有实现，可以循环数组或对象，在fn里return false�
 
 判断是否是非空字符串
 
-* isEmptyObject(o)
+* nextTick(fn)
 
-判断是否是空对象
+在下一个浏览器空闲点执行函数，相当于setTimeout(fn, 0)
+
+* uniqueCid()
+
+生成客户端唯一id
+
+* isWindow()
+
+判断是否为window对象
 
 * isPlainObject(o)
 
 相对于$.isPlainObject(), 判断一个对象是否为纯对象
 
-* isPending(val)
+* extend()
 
-判断一个jQuery deferred对象是否正在处理中
+jQuery extend
 
 * isArray/isString/isFunction/is...
 
 * type(o) => string/function/....
+
 类型判断
 
 * inArray(arr, item)
 
 判断item是否在arr中
+
+* makeArray(val)
+
+转换成一个原生数组。
+
+* erase(target, array)
+
+从数组中删除元素
 
 * singleton(fn, context)
 
@@ -90,11 +108,9 @@ S.each 兼容原有实现，可以循环数组或对象，在fn里return false�
 
 首字母大写
 
+::
+
     tbtx.ucfirst("string") => "String"
-
-* lcfirst(val)
-
-首字母小写
 
 * later(fn, when, periodic, context, data)
 
@@ -124,24 +140,6 @@ S.each 兼容原有实现，可以循环数组或对象，在fn里return false�
 
 数组去重
 
-* sizeof(str)
-
-返回str的长度，ascii的算1，ascii之外的算2
-
-::
-
-    expect(tbtx.sizeof("abc")).toEqual(3);
-
-    expect(tbtx.sizeof("a汉字c")).toEqual(6);
-
-* makeArray(val)
-
-转换成一个原生数组。
-
-* deepCopy(o)
-
-深拷贝一个对象或数组
-
 * namespace(args)
 
 命名空间，创建相应命名对象
@@ -164,117 +162,17 @@ S.each 兼容原有实现，可以循环数组或对象，在fn里return false�
 
 判断字符串是否以suffix结尾
 
-* choice(m, n)/choice(arr)
+* debounce(fn, [ms[, context]])
 
-返回一个m和n之间的随机数，m和n大小随意
+一定间隔内没有调用时，才开始执行被调用方法。
 
-也可以传入一个数组，随机返回数组内一个元素
+当在scroll事件或者resize事件里执行大量操作时，频繁触发会导致浏览器很卡，使用:$(window).on('resize', debounce(function, 300));
 
-如n < m, 返回结果包含n不包含m，即tbtx.choice(0, 10)返回0-9之间的任意数
-
-* shuffle(arr)
-
-数组随机重排序
-
-* Class(parent, properties)
-
-类与继承的实现
-
-Class的实例拥有多个方法
-
-include(o) => 添加属性或方法到原型上，让实例调用
-
-extend(o) => 添加类属性或方法
-
-proxy(fn) => 保证fn调用时的this为当前class，主要用于事件处理程序
-
-Implements(arr) => 见紧接着的classify
-
-传入properties实际就是调用include
-
-::
-
-    var Slide = new Class();
-
-    // 向类上添加静态属性
-
-    Slide.extend({
-        name: 'slide'
-    });
-
-    Slide.name =>; 'slide'
-
-    // 向实例上添加属性,其中init方法会在实例化的时候自动调用,也可以使用Slide.fn或者prototype访问到类的原型对象
-
-    Slide.include({
-        init: funciton(page) {
-            this.page = page;
-        },
-
-        sayPage: function() {
-            return this.page;
-        }
-    });
-
-    var s = new Slide(4);
-
-    s.sayPage() => 4;
-
-    // 继承
-    var SpecialSlide = new Class(Slide);
-    var s2 = new SpecialSlide(5);
-    s2.page = 6;
-    s2.sayPage() => 6
-
-* classify(o)
-
-让一个类或者对象（先称其为target）拥有Implements方法
-
-Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自身到 target上
-
-::
-
-    var o = {};
-
-    tbtx.classify(o);
-
-    var Events = function(){};
-
-    Events.prototype = {
-
-        on: function(){},
-
-        off: function(){}
-
-    };
-
-    o.Implements(Events);   // o对象即拥有了on和off方法
-
-* Now()
-
-返回时间戳
+例如很短时间内（ms内）第二次触发事件时, 不会执行fn，当停止触发ms后执行fn
 
 * throttle(fn, [ms[, context]])
 
-当在scroll事件或者resize事件里执行大量操作时，频繁触发会导致浏览器很卡，函数节流将函数限制在多少ms内只会触发一次，使用:$(window).on('resize', throttle(function, 300));
-
-* curry(fn)
-
-函数柯里化
-
-调用同样的函数并且传入的参数大部分都相同的时候，就是考虑柯里化的理想场景
-
-::
-
-    var add = function(num1, num2) {
-        return num2 + num1;
-    };
-
-    var curriedAdd = S.curry(add, 5);
-
-    curriedAdd(3) => 8  // 5 + 3
-
-    curriedAdd(4) => 9  // 5 + 4
+与debounce不同的是，函数节流将函数限制在多少ms内只会触发一次
 
 * substitute(str, o, regexp)
 
@@ -284,13 +182,24 @@ Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自
 
     substitute("my name is {{ name }}", {name: 'alex'}) => my name is alex
 
-* param(o, sep, eq, serializeArray)
+* stripTags(str)
 
-对象转为query字符串, =号和?号都可以自定义
+去除html中的字符串
 
-* unparam(str, sep, eq)
+::
 
-query字符串转为对象, =号和?号都可以自定义
+    stripTags("<p>123</p>") => 123
+
+* stripScripts(str)
+
+去除html中的script，包含script中的内容
+
+::
+
+    stripScripts("<script>var a = 123;</script>") => ""
+
+    // 也可以指定要删除的标签
+    stripScripts('<script>var a = 123;</script><style type="text/css"></style>', ["style", "script"]) => ""
 
 * escapeHtml(text)
 
@@ -299,3 +208,7 @@ query字符串转为对象, =号和?号都可以自定义
 * unEscapeHtml(text)
 
 此函数会对以下符号进行 unEscape： " < > & 和空格
+
+* truncate(str, length, truncation)
+
+对字符串进行截断，truncation默认为...

@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="aspect" href="aspect.html" />
-    <link rel="prev" title="dom" href="dom.html" /> 
+    <link rel="next" title="support" href="support.html" />
+    <link rel="prev" title="cookie" href="cookie.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="aspect.html" title="aspect"
+          <a href="support.html" title="support"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="dom.html" title="dom"
+          <a href="cookie.html" title="cookie"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -52,8 +52,8 @@
   <div class="section" id="events">
 <h1>events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h1>
 <p>提供基本的事件添加、移除和触发功能。</p>
+<p>on/off/trigger</p>
 <p>默认已经mixTo tbtx</p>
-<p>并且可以通过tbtx.on(&#8220;window.resize&#8221;)和tbtx.on(&#8220;window.scroll&#8221;)监听throttle过后的函数</p>
 <p>使用 Events 有两种方式，一种是直接实例化：</p>
 <div class="highlight-python"><pre>var object = new tbtx.Events();
 
@@ -80,19 +80,6 @@ dog.on('sleep', function() {
 
 dog.sleep();</pre>
 </div>
-<p>通过new tbtx.Class创建的类，或者对象或类classify之后, 去Implements Events，也可以获得on/off/trigger的能力</p>
-<div class="highlight-python"><pre>var o = {};
-
-tbtx.classify(o);
-
-o.Implements(tbtx.Events);   // o对象即拥有了on和off方法
-
-// 或者
-
-var App = new tbtx.Class();
-
-App.Implements(tbtx.Events)</pre>
-</div>
 </div>
 
 
@@ -102,11 +89,11 @@ App.Implements(tbtx.Events)</pre>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="dom.html"
-                        title="previous chapter">dom</a></p>
+  <p class="topless"><a href="cookie.html"
+                        title="previous chapter">cookie</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="aspect.html"
-                        title="next chapter">aspect</a></p>
+  <p class="topless"><a href="support.html"
+                        title="next chapter">support</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/events.txt"
@@ -136,10 +123,10 @@ App.Implements(tbtx.Events)</pre>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="aspect.html" title="aspect"
+          <a href="support.html" title="support"
              >next</a> |</li>
         <li class="right" >
-          <a href="dom.html" title="dom"
+          <a href="cookie.html" title="cookie"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

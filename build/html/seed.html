@@ -23,9 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="promise" href="promise.html" />
-    <link rel="prev" title="tbtx F2E document" href="index.html" /> 
+    <link rel="next" title="lang" href="lang.html" />
+    <link rel="prev" title="tbtx" href="about.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +36,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="promise.html" title="promise"
+          <a href="lang.html" title="lang"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="tbtx F2E document"
+          <a href="about.html" title="tbtx"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -57,11 +58,18 @@
 <p>在log环境下输出log信息，避免因为忘记删除log语句而引发错误</p>
 <blockquote>
 <div><p>log(msg) =&amp;gt; msg</p>
-<p>&#64;param cat 消息类型，如error, info, warm等
+<p>&#64;param msg string 消息内容</p>
+<p>&#64;param cat string 消息类型，如error, info, warm等
 log(msg, cat) 如log(&#8216;hello&#8217;, &#8216;error&#8217;)</p>
-<p>&#64;param src: 消息来源
+<p>&#64;param src string 消息来源
 log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&#8217;) =&amp;gt; pageA: hello</p>
 </div></blockquote>
+<ul class="simple">
+<li>error(msg)</li>
+</ul>
+<p>抛出错误</p>
+<blockquote>
+<div>&#64;param msg [string|Error]</div></blockquote>
 <ul class="simple">
 <li>global</li>
 </ul>
@@ -71,21 +79,9 @@ log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&
 </ul>
 <p>空函数, 相当于$.noop</p>
 <ul class="simple">
-<li>staticUrl</li>
+<li>mix</li>
 </ul>
-<p>静态资源地址前缀，会在后面根据tbtx.js所在目录进行重写，这里作为备用</p>
-<ul class="simple">
-<li>config(name, value)</li>
-</ul>
-<p>配置，name可传为一个配置对象</p>
-<ul class="simple">
-<li>$</li>
-</ul>
-<p>对jQuery或者Zepto的引用</p>
-<ul class="simple">
-<li>uniqueCid()</li>
-</ul>
-<p>生成客户端唯一cid</p>
+<p>简单的混入</p>
 </div>
 
 
@@ -95,11 +91,11 @@ log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">tbtx F2E document</a></p>
+  <p class="topless"><a href="about.html"
+                        title="previous chapter">tbtx</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="promise.html"
-                        title="next chapter">promise</a></p>
+  <p class="topless"><a href="lang.html"
+                        title="next chapter">lang</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/seed.txt"
@@ -129,10 +125,10 @@ log(msg, cat, src) 如log(&#8216;hello&#8217;, &#8216;info&#8217;, &#8216;pageA&
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="promise.html" title="promise"
+          <a href="lang.html" title="lang"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="tbtx F2E document"
+          <a href="about.html" title="tbtx"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

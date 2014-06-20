@@ -23,9 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
     <link rel="next" title="uri" href="uri.html" />
-    <link rel="prev" title="cache" href="cache.html" /> 
+    <link rel="prev" title="seed" href="seed.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +39,7 @@
           <a href="uri.html" title="uri"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="cache.html" title="cache"
+          <a href="seed.html" title="seed"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -77,8 +78,8 @@
 <li>&#8220;str&#8221;.trim() -&gt; tbtx.trim(&#8220;str&#8221;)</li>
 </ul>
 <p>注意：
-forEach, map, filter, every, some(fn, context) -&gt; (object, fn, context)
-同时object可以传入对象, fn的参数为(value, key, object),对于filter和map，返回的也是对象，而非数组</p>
+forEach, map, filter, every, some(fn, context) 相应的参数变为 (object, fn, context)</p>
+<p>同时可以传入object和类数组对象，fn的参数为(value, key, object),对于filter和map，返回的也是对象，而非数组</p>
 <p>reduce reduceRight indexOf lastIndexOf不多说</p>
 <p>S.each 兼容原有实现，可以循环数组或对象，在fn里return false终止</p>
 <ul class="simple">
@@ -86,17 +87,25 @@ forEach, map, filter, every, some(fn, context) -&gt; (object, fn, context)
 </ul>
 <p>判断是否是非空字符串</p>
 <ul class="simple">
-<li>isEmptyObject(o)</li>
+<li>nextTick(fn)</li>
 </ul>
-<p>判断是否是空对象</p>
+<p>在下一个浏览器空闲点执行函数，相当于setTimeout(fn, 0)</p>
+<ul class="simple">
+<li>uniqueCid()</li>
+</ul>
+<p>生成客户端唯一id</p>
+<ul class="simple">
+<li>isWindow()</li>
+</ul>
+<p>判断是否为window对象</p>
 <ul class="simple">
 <li>isPlainObject(o)</li>
 </ul>
 <p>相对于$.isPlainObject(), 判断一个对象是否为纯对象</p>
 <ul class="simple">
-<li>isPending(val)</li>
+<li>extend()</li>
 </ul>
-<p>判断一个jQuery deferred对象是否正在处理中</p>
+<p>jQuery extend</p>
 <ul class="simple">
 <li>isArray/isString/isFunction/is...</li>
 <li>type(o) =&gt; string/function/....</li>
@@ -106,6 +115,14 @@ forEach, map, filter, every, some(fn, context) -&gt; (object, fn, context)
 <li>inArray(arr, item)</li>
 </ul>
 <p>判断item是否在arr中</p>
+<ul class="simple">
+<li>makeArray(val)</li>
+</ul>
+<p>转换成一个原生数组。</p>
+<ul class="simple">
+<li>erase(target, array)</li>
+</ul>
+<p>从数组中删除元素</p>
 <ul class="simple">
 <li>singleton(fn, context)</li>
 </ul>
@@ -133,12 +150,8 @@ init() =&gt; 无输出</pre>
 <li>ucfirst(val)</li>
 </ul>
 <p>首字母大写</p>
-<blockquote>
-<div>tbtx.ucfirst(&#8220;string&#8221;) =&gt; &#8220;String&#8221;</div></blockquote>
-<ul class="simple">
-<li>lcfirst(val)</li>
-</ul>
-<p>首字母小写</p>
+<div class="highlight-python"><pre>tbtx.ucfirst("string") =&gt; "String"</pre>
+</div>
 <ul class="simple">
 <li>later(fn, when, periodic, context, data)</li>
 </ul>
@@ -165,23 +178,6 @@ timer.interval =&gt; true</pre>
 </ul>
 <p>数组去重</p>
 <ul class="simple">
-<li>sizeof(str)</li>
-</ul>
-<p>返回str的长度，ascii的算1，ascii之外的算2</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">expect</span><span class="p">(</span><span class="n">tbtx</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">toEqual</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-
-<span class="n">expect</span><span class="p">(</span><span class="n">tbtx</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="s">&quot;a汉字c&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">toEqual</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li>makeArray(val)</li>
-</ul>
-<p>转换成一个原生数组。</p>
-<ul class="simple">
-<li>deepCopy(o)</li>
-</ul>
-<p>深拷贝一个对象或数组</p>
-<ul class="simple">
 <li>namespace(args)</li>
 </ul>
 <p>命名空间，创建相应命名对象</p>
@@ -200,101 +196,15 @@ tbtx.app =&gt; {}</pre>
 </ul>
 <p>判断字符串是否以suffix结尾</p>
 <ul class="simple">
-<li>choice(m, n)/choice(arr)</li>
+<li>debounce(fn, [ms[, context]])</li>
 </ul>
-<p>返回一个m和n之间的随机数，m和n大小随意</p>
-<p>也可以传入一个数组，随机返回数组内一个元素</p>
-<p>如n &lt; m, 返回结果包含n不包含m，即tbtx.choice(0, 10)返回0-9之间的任意数</p>
-<ul class="simple">
-<li>shuffle(arr)</li>
-</ul>
-<p>数组随机重排序</p>
-<ul class="simple">
-<li>Class(parent, properties)</li>
-</ul>
-<p>类与继承的实现</p>
-<p>Class的实例拥有多个方法</p>
-<p>include(o) =&gt; 添加属性或方法到原型上，让实例调用</p>
-<p>extend(o) =&gt; 添加类属性或方法</p>
-<p>proxy(fn) =&gt; 保证fn调用时的this为当前class，主要用于事件处理程序</p>
-<p>Implements(arr) =&gt; 见紧接着的classify</p>
-<p>传入properties实际就是调用include</p>
-<div class="highlight-python"><pre>var Slide = new Class();
-
-// 向类上添加静态属性
-
-Slide.extend({
-    name: 'slide'
-});
-
-Slide.name =&gt;; 'slide'
-
-// 向实例上添加属性,其中init方法会在实例化的时候自动调用,也可以使用Slide.fn或者prototype访问到类的原型对象
-
-Slide.include({
-    init: funciton(page) {
-        this.page = page;
-    },
-
-    sayPage: function() {
-        return this.page;
-    }
-});
-
-var s = new Slide(4);
-
-s.sayPage() =&gt; 4;
-
-// 继承
-var SpecialSlide = new Class(Slide);
-var s2 = new SpecialSlide(5);
-s2.page = 6;
-s2.sayPage() =&gt; 6</pre>
-</div>
-<ul class="simple">
-<li>classify(o)</li>
-</ul>
-<p>让一个类或者对象（先称其为target）拥有Implements方法</p>
-<p>Implements接受一个参数，或一个参数数组，拷贝参数原型 || 自身到 target上</p>
-<div class="highlight-python"><pre>var o = {};
-
-tbtx.classify(o);
-
-var Events = function(){};
-
-Events.prototype = {
-
-    on: function(){},
-
-    off: function(){}
-
-};
-
-o.Implements(Events);   // o对象即拥有了on和off方法</pre>
-</div>
-<ul class="simple">
-<li>Now()</li>
-</ul>
-<p>返回时间戳</p>
+<p>一定间隔内没有调用时，才开始执行被调用方法。</p>
+<p>当在scroll事件或者resize事件里执行大量操作时，频繁触发会导致浏览器很卡，使用:$(window).on(&#8216;resize&#8217;, debounce(function, 300));</p>
+<p>例如很短时间内（ms内）第二次触发事件时, 不会执行fn，当停止触发ms后执行fn</p>
 <ul class="simple">
 <li>throttle(fn, [ms[, context]])</li>
 </ul>
-<p>当在scroll事件或者resize事件里执行大量操作时，频繁触发会导致浏览器很卡，函数节流将函数限制在多少ms内只会触发一次，使用:$(window).on(&#8216;resize&#8217;, throttle(function, 300));</p>
-<ul class="simple">
-<li>curry(fn)</li>
-</ul>
-<p>函数柯里化</p>
-<p>调用同样的函数并且传入的参数大部分都相同的时候，就是考虑柯里化的理想场景</p>
-<div class="highlight-python"><pre>var add = function(num1, num2) {
-    return num2 + num1;
-};
-
-var curriedAdd = S.curry(add, 5);
-
-curriedAdd(3) =&gt; 8  // 5 + 3
-
-curriedAdd(4) =&gt; 9  // 5 + 4</pre>
-</div>
+<p>与debounce不同的是，函数节流将函数限制在多少ms内只会触发一次</p>
 <ul class="simple">
 <li>substitute(str, o, regexp)</li>
 </ul>
@@ -302,13 +212,20 @@ curriedAdd(4) =&gt; 9  // 5 + 4</pre>
 <div class="highlight-python"><pre>substitute("my name is {{ name }}", {name: 'alex'}) =&gt; my name is alex</pre>
 </div>
 <ul class="simple">
-<li>param(o, sep, eq, serializeArray)</li>
+<li>stripTags(str)</li>
 </ul>
-<p>对象转为query字符串, =号和?号都可以自定义</p>
+<p>去除html中的字符串</p>
+<div class="highlight-python"><pre>stripTags("&lt;p&gt;123&lt;/p&gt;") =&gt; 123</pre>
+</div>
 <ul class="simple">
-<li>unparam(str, sep, eq)</li>
+<li>stripScripts(str)</li>
 </ul>
-<p>query字符串转为对象, =号和?号都可以自定义</p>
+<p>去除html中的script，包含script中的内容</p>
+<div class="highlight-python"><pre>stripScripts("&lt;script&gt;var a = 123;&lt;/script&gt;") =&gt; ""
+
+// 也可以指定要删除的标签
+stripScripts('&lt;script&gt;var a = 123;&lt;/script&gt;&lt;style type="text/css"&gt;&lt;/style&gt;', ["style", "script"]) =&gt; ""</pre>
+</div>
 <ul class="simple">
 <li>escapeHtml(text)</li>
 </ul>
@@ -317,6 +234,10 @@ curriedAdd(4) =&gt; 9  // 5 + 4</pre>
 <li>unEscapeHtml(text)</li>
 </ul>
 <p>此函数会对以下符号进行 unEscape： &#8221; &lt; &gt; &amp; 和空格</p>
+<ul class="simple">
+<li>truncate(str, length, truncation)</li>
+</ul>
+<p>对字符串进行截断，truncation默认为...</p>
 </div>
 
 
@@ -326,8 +247,8 @@ curriedAdd(4) =&gt; 9  // 5 + 4</pre>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="cache.html"
-                        title="previous chapter">cache</a></p>
+  <p class="topless"><a href="seed.html"
+                        title="previous chapter">seed</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="uri.html"
                         title="next chapter">uri</a></p>
@@ -363,7 +284,7 @@ curriedAdd(4) =&gt; 9  // 5 + 4</pre>
           <a href="uri.html" title="uri"
              >next</a> |</li>
         <li class="right" >
-          <a href="cache.html" title="cache"
+          <a href="seed.html" title="seed"
              >previous</a> |</li>
         <li><a href="index.html">tbtx 0.1.0 documentation</a> &raquo;</li> 
       </ul>

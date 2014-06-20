@@ -8,12 +8,19 @@ seed
 
     log(msg) =&gt; msg
 
-    @param cat 消息类型，如error, info, warm等
+    @param msg string 消息内容
+
+    @param cat string 消息类型，如error, info, warm等
     log(msg, cat) 如log('hello', 'error')
 
-    @param src: 消息来源
+    @param src string 消息来源
     log(msg, cat, src) 如log('hello', 'info', 'pageA') =&gt; pageA: hello
 
+* error(msg)
+
+抛出错误
+
+    @param msg [string|Error]
 
 * global
 
@@ -23,18 +30,6 @@ seed
 
 空函数, 相当于$.noop
 
-* staticUrl
+* mix
 
-静态资源地址前缀，会在后面根据tbtx.js所在目录进行重写，这里作为备用
-
-* config(name, value)
-
-配置，name可传为一个配置对象
-
-* $
-
-对jQuery或者Zepto的引用
-
-* uniqueCid()
-
-生成客户端唯一cid
+简单的混入

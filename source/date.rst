@@ -9,14 +9,6 @@ date均可以为字符串，数字或者date对象
 
 "Y-m-d h:i:s" 按format格式化日期
 
-* normalDate(date)
-
-将date转为对象，包含Y-M-D-H-I-S-y-m-d-h-i-s
-
-* ago(date1[, date2])
-
-对比两个时间，输出刚刚/分钟前/小时前/天前/月前/年前
-
 ::
 
     /*
@@ -36,3 +28,12 @@ date均可以为字符串，数字或者date对象
      *  毫秒暂不支持
      *  @return：指定格式的字符串
      */
+
+* normalDate(date)
+
+将date转为对象，包含Y-M-D-H-I-S-y-m-d-h-i-s
+
+* diffDate(date1, date2)
+
+计算两个日期只差，输出天/小时/分/秒
+

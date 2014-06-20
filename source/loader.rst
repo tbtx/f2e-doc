@@ -1,41 +1,39 @@
-request
-===============
-
-* tbtx.loadCss/loadScript(url, callback, charset)
-
-url可以是miee/js/m.js，会自动加上静态文件前缀的url
-
-加载css,js, 返回deferred对象，即可以使用
-
-::
-
-    tbtx.loadScript().done/fail/always/then
-
-对于 loadScript,
-
-url可以是一个数组，会按照数组中的脚本顺序加载，全部加载完成执行callback
-
-* realpath
-
-::
-
-    realpath("http://test.com/a/./b/../c") ==> "http://test.com/a/c"
-
 loader
 ===============
 
-* tbtx.require(names, callback, baseUrl)
+遵循AMD规范的模块加载器
 
-加载组件，如tbtx.require("popup", function(){}), 会自动处理依赖引入overlay和popup
+* define/tbtx.define(id, deps, factory)
 
-* tbtx.Loader.config()
+定义模块，开发者所关注
 
-可以配置的项有：
+id 模块id
+deps 模块依赖
+factory 模块内容
 
 ::
 
-    // 默认在组件目录， 一般不需要处理，特殊情况请在require时指定baseUrl
-    baseUrl: S.staticUrl + "/base/js/component/",
+    define("miiee/js/abc", ["jquery"]);
+
+* tbtx.require(deps, callback)
+
+加载模块，调用者所关注
+
+依赖模块的接口会作为参数传入callback
+
+::
+
+    tbtx.require("jquery", function($) {
+
+    });
+
+* tbtx.Loader.config()
+
+加载器配置，可以配置的项有：
+
+::
+
+    base: 基础路径，默认为静态文件顶层
 
     // 别名配置，与path配合，配置后可以直接require("jquery")
     alias: {
@@ -46,18 +44,14 @@ loader
 
     // 路径配置
     paths: {
-        miiee: '../../../miiee/js',
-        plugin: '../plugin',
-        gallery: '../gallery',
-        jquery: '../jquery'
+        'gallery': 'https://a.alipayobjects.com/gallery'
     },
 
-    // 依赖关系配置
-    deps: {
-        // 修正页面JS已引入的状态
-        drop: "overlay",
-        popup: "overlay",
-        tip: "drop",
-        templatable: "handlebars",
-        autocomplete: ["overlay", "templatable"]
-    }
+    // 映射配置
+    map: [
+        ['http://example.com/js/app/', 'http://localhost/js/app/']
+    ],
+
+* importStyle(cssText)
+
+加载css文本

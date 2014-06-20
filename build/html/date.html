@@ -23,8 +23,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="detector" href="detector.html" />
+    <link rel="next" title="request" href="request.html" />
     <link rel="prev" title="support" href="support.html" /> 
   </head>
   <body>
@@ -35,7 +36,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="detector.html" title="detector"
+          <a href="request.html" title="request"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="support.html" title="support"
@@ -57,14 +58,6 @@
 <li>formatDate([format[, date]])</li>
 </ul>
 <p>&#8220;Y-m-d h:i:s&#8221; 按format格式化日期</p>
-<ul class="simple">
-<li>normalDate(date)</li>
-</ul>
-<p>将date转为对象，包含Y-M-D-H-I-S-y-m-d-h-i-s</p>
-<ul class="simple">
-<li>ago(date1[, date2])</li>
-</ul>
-<p>对比两个时间，输出刚刚/分钟前/小时前/天前/月前/年前</p>
 <div class="highlight-python"><pre>/*
  * 将日期格式化成字符串
  *  Y - 4位年
@@ -83,6 +76,14 @@
  *  @return：指定格式的字符串
  */</pre>
 </div>
+<ul class="simple">
+<li>normalDate(date)</li>
+</ul>
+<p>将date转为对象，包含Y-M-D-H-I-S-y-m-d-h-i-s</p>
+<ul class="simple">
+<li>diffDate(date1, date2)</li>
+</ul>
+<p>计算两个日期只差，输出天/小时/分/秒</p>
 </div>
 
 
@@ -95,8 +96,8 @@
   <p class="topless"><a href="support.html"
                         title="previous chapter">support</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="detector.html"
-                        title="next chapter">detector</a></p>
+  <p class="topless"><a href="request.html"
+                        title="next chapter">request</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/date.txt"
@@ -126,7 +127,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="detector.html" title="detector"
+          <a href="request.html" title="request"
              >next</a> |</li>
         <li class="right" >
           <a href="support.html" title="support"

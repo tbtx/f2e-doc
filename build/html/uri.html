@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tbtx 0.1.0 documentation" href="index.html" />
-    <link rel="next" title="request" href="loader.html" />
+    <link rel="next" title="loader" href="loader.html" />
     <link rel="prev" title="lang" href="lang.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="loader.html" title="request"
+          <a href="loader.html" title="loader"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="lang.html" title="lang"
@@ -53,6 +53,14 @@
 <h1>uri<a class="headerlink" href="#uri" title="Permalink to this headline">¶</a></h1>
 <p>uri相关</p>
 <ul class="simple">
+<li>param(o, sep, eq, serializeArray)</li>
+</ul>
+<p>对象转为query字符串, =号和?号都可以自定义</p>
+<ul class="simple">
+<li>unparam(str, sep, eq)</li>
+</ul>
+<p>query字符串转为对象, =号和?号都可以自定义</p>
+<ul class="simple">
 <li>Query类</li>
 </ul>
 <p>提供查询字符串的相关操作</p>
@@ -60,7 +68,6 @@
 
 query.get("name") =&gt; 123
 query.get() =&gt; {name: 123, age: 12}
-query.keys()
 query.set(key, value)
 query.remove(key)
 query.add(key, value)
@@ -70,8 +77,8 @@ query.toString() =&gt; 返回新的查询字符串</pre>
 <li>Uri类</li>
 </ul>
 <p>提供url解析</p>
-<p>Uri.getComponents(url)</p>
-<div class="highlight-python"><pre>解析url，返回url信息，url默认为location.href
+<p>Uri.getComponents(uri)</p>
+<div class="highlight-python"><pre>解析uri，返回uri信息，uri默认为location.href
 // 返回对象
 scheme: 协议，如http
 domain: 域名，如miiee.taobao.com
@@ -86,30 +93,34 @@ uri.getFragment() // 获取锚点
 uri.toString() // 返回新的uri</pre>
 </div>
 <ul class="simple">
-<li>isUri(url)</li>
+<li>isUri(uri)</li>
 </ul>
 <p>判断是否为uri</p>
 <ul class="simple">
-<li>parseUrl(url)</li>
+<li>parseUri(uri)</li>
 </ul>
-<p>相当于 Uri.getComponents(url)</p>
+<p>相当于 Uri.getComponents(uri)</p>
 <ul class="simple">
-<li>getFragment(url)</li>
+<li>getFragment(uri)</li>
 </ul>
 <p>获取锚点值</p>
 <ul class="simple">
-<li>getQueryParam([name[, url]])</li>
+<li>get/set/remove/add QueryParam</li>
+</ul>
+<p>获取/设置/删除/增加查询参数，url可作为第一个或最后一个参数传入</p>
+<ul class="simple">
+<li>getQueryParam(name)</li>
 </ul>
 <p>返回解析url的查询字符串的对象，如果提供name，则返回name的值</p>
 <ul class="simple">
-<li>addQueryParam(name, value[, url])/addQueryParam(o[, url])</li>
+<li>addQueryParam(name, value)/addQueryParam(object)</li>
 </ul>
 <p>对一个url增加查询参数，返回增加后的url</p>
 <p>如果有多个参数要增加可以传入一个对象</p>
 <ul class="simple">
-<li>removeQueryParam(name[, url])</li>
+<li>removeQueryParam(names)</li>
 </ul>
-<p>对一个url删除查询参数，返回删除参数后的url</p>
+<p>对一个url删除查询参数，返回删除参数后的url, names可以为数组或键</p>
 </div>
 
 
@@ -123,7 +134,7 @@ uri.toString() // 返回新的uri</pre>
                         title="previous chapter">lang</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="loader.html"
-                        title="next chapter">request</a></p>
+                        title="next chapter">loader</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/uri.txt"
@@ -153,7 +164,7 @@ uri.toString() // 返回新的uri</pre>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="loader.html" title="request"
+          <a href="loader.html" title="loader"
              >next</a> |</li>
         <li class="right" >
           <a href="lang.html" title="lang"
