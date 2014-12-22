@@ -2,3 +2,11 @@ site_name: tbtx fe2-doc
 pages:
 - [index.md, index]
 - [seed.md, seed]
+- [lang.md, lang]
+- [uri.md, uri]
+- [event.md, event]
+- [support.md, support]
+- [loader.md, loader]
+- [cookie.md, cookie]
+- [date.md, date]
+- [request.md, request]
