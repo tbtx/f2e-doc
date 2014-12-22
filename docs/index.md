@@ -6,5 +6,5 @@ base包含语言扩展，uri相关，dom无关事件，模块加载，cookie操�
 
 ## 组件
 
-[arale](http://aralejs.org/)
-[base&widget](https://github.com/aralejs/widget/wiki/Base-&-Widget-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B)
+* [arale](http://aralejs.org/)
+* [base&widget](https://github.com/aralejs/widget/wiki/Base-&-Widget-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B)
