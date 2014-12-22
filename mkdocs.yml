@@ -1,1 +1,4 @@
 site_name: tbtx fe2-doc
+pages:
+- [index.md, index]
+- [seed.md, seed]
