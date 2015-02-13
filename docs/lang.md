@@ -93,27 +93,12 @@
      */
     substitute(str, o, reserve)
 
-## cidGenerator
-
-cid生成器
-
-    /**
-     * @param [prefix] [string] 可选的前缀
-     */
-
-    var cid = cidGenerator();
-    cid() => 0
-    cid() => 1
-
-    var wcid = cidGenerator("widget-");
-    wcid() => widget-0
-    wcid() => widget-1
-
 ## uniqueCid
 
-cidGenerator的一个实例
+生成唯一id
 
     uniqueCid() => 0
+    uniqueCid() => 1
 
 ## isNotEmptyString
 
@@ -126,6 +111,12 @@ cidGenerator的一个实例
 将字符串首字母大写
 
     ucfirst("abc") => "Abc"
+
+## dasherize
+
+将字符串转为连字符风格
+
+    dasherize("myName") => "my-name"
 
 ## random
 
